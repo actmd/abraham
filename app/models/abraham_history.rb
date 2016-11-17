@@ -1,0 +1,2 @@
+class AbrahamHistory < ApplicationRecord
+end
