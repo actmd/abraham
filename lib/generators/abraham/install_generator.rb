@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 require 'rails/generators'
-require "rails/generators/active_record"
+require 'rails/generators/active_record'
 
 module Abraham
   module Generators
     class InstallGenerator < ActiveRecord::Generators::Base
       argument :name, type: :string, default: 'random_name'
 
-      class_option :'skip-migration', :type => :boolean, :desc => "Don't generate a migration for the histories table"
-      class_option :'skip-initializer', :type => :boolean, :desc => "Don't generate an initializer"
+      class_option :'skip-migration', type: :boolean, desc: "Don't generate a migration for the histories table"
+      class_option :'skip-initializer', type: :boolean, desc: "Don't generate an initializer"
 
       source_root File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
 

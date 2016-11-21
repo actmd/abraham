@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AbrahamHistoriesController < ApplicationController
   def create
     @abraham_history = AbrahamHistory.new(abraham_history_params)
