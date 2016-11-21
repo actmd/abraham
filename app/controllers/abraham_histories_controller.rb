@@ -1,9 +1,10 @@
 class AbrahamHistoriesController < ApplicationController
   def create
     @abraham_history = AbrahamHistory.new(abraham_history_params)
+    @abraham_history.creator_id = current_user
     respond_to do |format|
       if @abraham_history.save
-        format.json { render :show, status: :created, location: @abraham_history }
+        format.json { render json: @abraham_history, status: :created }
       else
         format.json { render json: @abraham_history.errors, status: :unprocessable_entity }
       end

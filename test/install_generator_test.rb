@@ -1,10 +1,10 @@
 require 'test_helper'
 require "rails/generators"
-require "generators/abraham_generator"
+require "generators/abraham/install_generator"
 
-class AbrahamGeneratorTest < Rails::Generators::TestCase
+class InstallGeneratorTest < Rails::Generators::TestCase
 
-  tests AbrahamGenerator
+  tests Abraham::Generators::InstallGenerator
   destination File.expand_path("../../tmp", __FILE__)
 
   setup :prepare_destination

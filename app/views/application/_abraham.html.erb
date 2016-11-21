@@ -1,8 +1,7 @@
 <script>
   var tour = new Shepherd.Tour({
     defaults: {
-      // TODO In abraham, this should be configurable
-      classes: 'shepherd-theme-default'
+      classes: '<%= Rails.configuration.abraham.default_theme %>'
     }
   });
 

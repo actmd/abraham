@@ -42,3 +42,4 @@ bower.json
 .byebug_history
 
 .idea/
+/test/dummy/tmp/

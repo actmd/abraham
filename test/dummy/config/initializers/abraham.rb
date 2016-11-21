@@ -15,5 +15,7 @@ Rails.application.configure do
     end
   end
 
-  config.abraham = tours
+  config.abraham = ActiveSupport::OrderedOptions.new
+  config.abraham.default_theme = 'shepherd-theme-default'
+  config.abraham.tours = tours
 end
