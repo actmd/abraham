@@ -1,0 +1,13 @@
+intro:
+  steps:
+    1:
+      text: "ENGLISH This first HOME step is centered text-only"
+    2:
+      title: "ENGLISH This step has a title"
+      text: "ENGLISH This intermediate step has some text"
+    3:
+      title: "ENGLISH The final step"
+      text: "ENGLISH Some text here too, and it's attached to the right"
+      attachTo:
+        element: ".notice-me"
+        position: "right"

@@ -1,0 +1,11 @@
+defaults: &defaults
+  :default_theme: 'shepherd-theme-default'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
