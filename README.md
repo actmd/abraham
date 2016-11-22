@@ -12,7 +12,7 @@ Abraham injects dynamically-generated [Shepherd.js](http://github.hubspot.com/sh
 
 ## Requirements
 
-* devise? (for current_user)
+Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
 
 ## Installation
 
@@ -50,6 +50,21 @@ Shepherd.js provides the following themes:
 - `shepherd-theme-default`
 - `shepherd-theme-square`
 - `shepherd-theme-square-dark`
+
+Update `config/abraham.yml` if you choose a different theme:
+
+```
+defaults: &defaults
+  :default_theme: 'shepherd-theme-arrows'
+```
+
+Tell Abraham where to insert its generated JavaScript in `app/views/layouts/application.html.erb`, just before the closing `body` tag:
+
+```erb
+<%= abraham_tour %>
+</body>
+</html>
+```
 
 ## Defining your tours
 
@@ -101,8 +116,4 @@ Abraham takes care of which buttons should appear with each step:
 
 ### Testing your tours
 
-Abraham loads tour definitions once when you start your server. If you'd like to iteratively test changes without restarting your server, use the Rails console to rerun the initializer:
-
-```
-???
-```
+Abraham loads tour definitions once when you start your server. Restart your server to see tour changes.
