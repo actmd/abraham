@@ -1093,3 +1093,563 @@ Completed 201 Created in 16ms (Views: 1.0ms | ActiveRecord: 2.1ms)
 Abraham::Test: test_truth
 -------------------------
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:23:05 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (7.5ms)
+  [1m[36mAbrahamHistory Load (0.6ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 423], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (31.2ms)
+Completed 200 OK in 1407ms (Views: 1403.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:23:06 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.7ms)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:23:06 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.4ms)
+  [1m[36mAbrahamHistory Load (0.5ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 2], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.3ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.5ms)
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:23:06 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.9ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:23:06 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 0], ["created_at", 2016-11-22 03:23:06 UTC], ["updated_at", 2016-11-22 03:23:06 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 16ms (Views: 0.8ms | ActiveRecord: 2.1ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:37:41 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.4ms)
+  [1m[36mAbrahamHistory Load (0.6ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 31], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (33.0ms)
+Completed 200 OK in 1289ms (Views: 1284.4ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:37:43 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.6ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 2], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.7ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:37:43 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 9], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.3ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:37:43 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 5], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.3ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:37:43 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 41], ["created_at", 2016-11-22 03:37:43 UTC], ["updated_at", 2016-11-22 03:37:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 15ms (Views: 1.0ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:38:32 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 23], ["created_at", 2016-11-22 03:38:32 UTC], ["updated_at", 2016-11-22 03:38:32 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 20ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:38:32 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (3.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (33.5ms)
+Completed 200 OK in 1217ms (Views: 1213.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:38:33 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.7ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:38:34 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.4ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:39:34 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (3.7ms)
+  [1m[36mAbrahamHistory Load (0.5ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (37.3ms)
+Completed 200 OK in 1360ms (Views: 1355.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:39:36 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 37], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.7ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:39:36 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.7ms)
+  [1m[36mAbrahamHistory Load (0.3ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 40], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.0ms)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:39:36 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 9], ["created_at", 2016-11-22 03:39:36 UTC], ["updated_at", 2016-11-22 03:39:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 19ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:42:25 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 0], ["created_at", 2016-11-22 03:42:25 UTC], ["updated_at", 2016-11-22 03:42:25 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 22ms (Views: 0.9ms | ActiveRecord: 2.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:42:25 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (35.0ms)
+Completed 200 OK in 1227ms (Views: 1223.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:42:26 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 45150], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.6ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:42:26 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 3], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.0ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-21 22:50:17 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 945], ["created_at", 2016-11-22 03:50:17 UTC], ["updated_at", 2016-11-22 03:50:17 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 21ms (Views: 1.1ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-21 22:50:18 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (2.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 7], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (33.1ms)
+Completed 200 OK in 1226ms (Views: 1222.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:50:19 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 5], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.1ms)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:50:19 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 1], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.8ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-21 22:50:19 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 709], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (3.2ms)
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------
+Abraham::Test: test_truth
+-------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------
+InstallGeneratorTest: test_should_generate_a_migration
+------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------
+InstallGeneratorTest: test_should_generate_an_initializer
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_initializer_when_told_to_do_so
+-------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------------
+InstallGeneratorTest: test_should_skip_the_migration_when_told_to_do_so
+-----------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------
+DashboardControllerTest: test_home_should_have_home_tour_code
+-------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-22 10:05:47 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (4.2ms)
+  [1m[36mAbrahamHistory Load (0.4ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 482], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (29.2ms)
+Completed 200 OK in 1606ms (Views: 1594.5ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------
+DashboardControllerTest: test_other_should_have_other_tour_code
+---------------------------------------------------------------
+Started GET "/dashboard/other" for 127.0.0.1 at 2016-11-22 10:05:49 -0500
+Processing by DashboardController#other as HTML
+  Rendering dashboard/other.html.erb within layouts/application
+  Rendered dashboard/other.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 6], ["controller_name", "dashboard"], ["action_name", "other"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.2ms)
+Completed 200 OK in 26ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+DashboardControllerTest: test_uses_configured_shepherd_theme
+------------------------------------------------------------
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-22 10:05:49 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 281], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (1.9ms)
+Completed 200 OK in 21ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+Started GET "/dashboard/home" for 127.0.0.1 at 2016-11-22 10:05:49 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 8], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (2.0ms)
+Completed 200 OK in 33ms (Views: 20.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------------------------
+AbrahamHistoriesControllerTest: test_should_create_AbrahamHistory
+-----------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+Started POST "/abraham_histories.json" for 127.0.0.1 at 2016-11-22 10:05:49 -0500
+Processing by AbrahamHistoriesController#create as JSON
+  Parameters: {"abraham_history"=>{"action_name"=>"foo", "controller_name"=>"bar", "tour_name"=>"baz"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "abraham_histories" ("controller_name", "action_name", "tour_name", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["controller_name", "bar"], ["action_name", "foo"], ["tour_name", "baz"], ["creator_id", 0], ["created_at", 2016-11-22 15:05:49 UTC], ["updated_at", 2016-11-22 15:05:49 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 16ms (Views: 1.1ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "abraham_histories"[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m

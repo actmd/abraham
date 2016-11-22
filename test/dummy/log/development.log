@@ -2886,3 +2886,130 @@ Processing by DashboardController#other as HTML
 Completed 200 OK in 107ms (Views: 103.5ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for ::1 at 2016-11-21 22:41:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/jabbett/.rvm/gems/ruby-2.3.2@abraham/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jabbett/.rvm/gems/ruby-2.3.2@abraham/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb (11.2ms)
+Completed 200 OK in 53ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:41:07 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.6ms)
+  [1m[36mAbrahamHistory Load (0.6ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 847], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (68.6ms)
+Completed 200 OK in 1649ms (Views: 1645.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:43:49 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (1.4ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 26], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (4.4ms)
+Completed 200 OK in 182ms (Views: 178.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:43:51 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.5ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 5898], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (3.1ms)
+Completed 200 OK in 130ms (Views: 126.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:44:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.3ms)
+  [1m[36mAbrahamHistory Load (1.1ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+Completed 200 OK in 1534ms (Views: 1529.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:44:26 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.6ms)
+  [1m[36mAbrahamHistory Load (0.3ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 136], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (38.4ms)
+Completed 200 OK in 186ms (Views: 182.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:45:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.3ms)
+  [1m[36mAbrahamHistory Load (0.9ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+Completed 200 OK in 1568ms (Views: 1561.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:45:44 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (1.9ms)
+  [1m[36mAbrahamHistory Load (1.0ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 4], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (79.1ms)
+Completed 200 OK in 241ms (Views: 237.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:46:25 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.3ms)
+  [1m[36mAbrahamHistory Load (0.8ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+Completed 200 OK in 1600ms (Views: 1594.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:46:29 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (1.0ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 8], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (33.1ms)
+Completed 200 OK in 177ms (Views: 174.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:46:31 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (0.6ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 699620], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (4.2ms)
+Completed 200 OK in 109ms (Views: 106.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:49:38 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (2.4ms)
+  [1m[36mAbrahamHistory Load (0.7ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 0], ["controller_name", "dashboard"], ["action_name", "home"]]
+Completed 200 OK in 1780ms (Views: 1776.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:49:42 -0500
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (1.8ms)
+  [1m[36mAbrahamHistory Load (0.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 9], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (35.7ms)
+Completed 200 OK in 179ms (Views: 177.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/dashboard/home" for ::1 at 2016-11-21 22:50:35 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DashboardController#home as HTML
+  Rendering dashboard/home.html.erb within layouts/application
+  Rendered dashboard/home.html.erb within layouts/application (1.9ms)
+  [1m[36mAbrahamHistory Load (1.2ms)[0m  [1m[34mSELECT "abraham_histories".* FROM "abraham_histories" WHERE "abraham_histories"."creator_id" = ? AND "abraham_histories"."controller_name" = ? AND "abraham_histories"."action_name" = ?[0m  [["creator_id", 808], ["controller_name", "dashboard"], ["action_name", "home"]]
+  Rendered /Users/jabbett/Workspace/abraham/app/views/application/_abraham.html.erb (22.3ms)
+Completed 200 OK in 981ms (Views: 977.4ms | ActiveRecord: 1.5ms)
+
+

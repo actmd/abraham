@@ -31,6 +31,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     begin
       run_generator
       assert_file 'config/initializers/abraham.rb'
+      assert_file 'config/abraham.yml'
     ensure
       FileUtils.rm_rf destination_root
     end

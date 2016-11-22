@@ -1,3 +1,3 @@
 # frozen_string_literal: true
-class AbrahamHistory < ApplicationRecord
+class AbrahamHistory < ActiveRecord::Base
 end

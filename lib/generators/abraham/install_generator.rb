@@ -21,6 +21,7 @@ module Abraham
       def create_initializer
         return if options['skip-initializer']
         copy_file 'initializer.rb', 'config/initializers/abraham.rb'
+        copy_file 'abraham.yml', 'config/abraham.yml'
       end
     end
   end
