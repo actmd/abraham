@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    abraham (0.1.0)
+    abraham (0.1.1)
       jquery-rails
       rails (~> 5.0.0, >= 5.0.0.1)
       rails-assets-shepherd.js (~> 1.8)
