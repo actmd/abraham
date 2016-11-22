@@ -11,7 +11,8 @@ module AbrahamHelper
 
     if tours
       completed = AbrahamHistory.where(
-        creator_id: current_user, controller_name: controller_name,
+        creator_id: current_user.id,
+        controller_name: controller_name,
         action_name: action_name
       )
       remaining = tours.keys - completed.map(&:tour_name)

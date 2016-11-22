@@ -43,3 +43,4 @@ bower.json
 
 .idea/
 /test/dummy/tmp/
+/test/dummy/log/

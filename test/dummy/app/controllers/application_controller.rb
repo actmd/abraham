@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    SecureRandom.uuid
+    OpenStruct.new(id: Random.rand(1..99999))
   end
 end
