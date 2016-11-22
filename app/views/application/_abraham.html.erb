@@ -1,0 +1,49 @@
+<script>
+  var tour = new Shepherd.Tour({
+    defaults: {
+      classes: '<%= Rails.configuration.abraham.default_theme %>'
+    }
+  });
+
+  tour.on("complete", function() {
+    // ajax
+    return $.ajax({
+      url: "/abraham_histories/",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify({
+        controller_name: '<%= controller_name %>',
+        action_name: '<%= action_name %>',
+        tour_name: '<%= tour_name %>'
+      })
+    });
+  });
+
+  <% steps.each_with_index do |(key, step), index| %>
+  tour.addStep('step-<%= key %>', {
+    <% if step.key?('title') %>
+    title: "<%= step['title'] %>",
+    <% end %>
+    text: "<%= step['text'] %>",
+    <% if step.key?('attachTo') %>
+    attachTo: { element: "<%= step['attachTo']['element'] %>", on: "<%= step['attachTo']['placement'] %>" },
+    <% end %>
+    buttons: [
+    <% if index == 0 %>
+      { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
+      { text: '<%= t('abraham.continue') %>', action: tour.next }
+    <% else %>
+        <% if index == steps.size - 1 %>
+      { text: '<%= t('abraham.done') %>', action: tour.complete }
+        <% else %>
+      { text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
+      { text: '<%= t('abraham.next') %>', action: tour.next }
+        <% end %>
+    <% end %>
+    ]
+  });
+  <% end %>
+
+  tour.start();
+</script>

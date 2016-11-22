@@ -1,0 +1,11 @@
+tour_one:
+  steps:
+    1:
+      title: "TOUR ONE step one ENGLISH"
+      text: "we show this on your first visit"
+
+tour_two:
+  steps:
+    1:
+      title: "TOUR TWO step one ENGLISH"
+      text: "we show this on your second visit"
