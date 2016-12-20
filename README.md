@@ -29,10 +29,10 @@ $ bundle install
 $ rails generate abraham:install
 ```
 
-Require Shepherd.js in `app/assets/javascripts/application.js`
+Require `abraham` in `app/assets/javascripts/application.js`
 
 ```
-//= require shepherd.js.js
+//= require abraham
 ```
 
 Require a Shepherd.js CSS theme in `app/assets/stylesheets/application.scss`
@@ -117,3 +117,11 @@ Abraham takes care of which buttons should appear with each step:
 ### Testing your tours
 
 Abraham loads tour definitions once when you start your server. Restart your server to see tour changes.
+
+If you'd like to run JavaScript integrations tests without the Abraham tours getting in the way, clear the Abraham configuration in your test helper, e.g.
+
+```
+Rails.application.configure do
+  config.abraham.tours = {}
+end
+```

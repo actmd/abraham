@@ -14,3 +14,6 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+# Avoid the 'multiple sources' confusion
+gem 'rails-assets-tether', :source => 'http://rails-assets.org/'
