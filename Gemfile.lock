@@ -146,6 +146,8 @@ PLATFORMS
 
 DEPENDENCIES
   abraham!
+  rails-assets-js-cookie (~> 2.1)!
+  rails-assets-shepherd.js (~> 1.8)!
   rails-assets-tether!
   rubocop
   sqlite3
