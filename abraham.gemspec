@@ -19,11 +19,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 5.0.0', '>= 5.0.0.1'
   s.add_dependency 'sass-rails', '~> 5.0'
-  s.add_dependency 'rails-assets-shepherd.js', '~> 1.8'
-  s.add_dependency 'rails-assets-js-cookie', '~> 2.1'
 
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rubocop'
 
   s.add_runtime_dependency 'jquery-rails'
+  s.add_runtime_dependency 'rails-assets-shepherd.js', '~> 1.8'
+  s.add_runtime_dependency 'rails-assets-js-cookie', '~> 2.1'
 end
