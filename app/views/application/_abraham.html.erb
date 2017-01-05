@@ -32,6 +32,10 @@
     text: "<%= step['text'] %>",
     <% if step.key?('attachTo') %>
     attachTo: { element: "<%= step['attachTo']['element'] %>", on: "<%= step['attachTo']['placement'] %>" },
+    showOn: function() {
+      // Only display this step if its selector is present
+      return document.querySelector("<%= step['attachTo']['element'] %>") ? true : false
+    },
     <% end %>
     buttons: [
     <% if index == 0 %>

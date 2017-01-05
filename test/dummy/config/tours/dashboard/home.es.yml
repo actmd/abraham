@@ -6,6 +6,12 @@ intro:
       title: "SPANISH This step has a title"
       text: "This intermediate step has some text"
     3:
+      title: "SPANISH A missing step"
+      text: "Refers to an element that won't exist on the page, should skip to 4"
+      attachTo:
+        element: "#i-dont-exist"
+        position: "right"
+    4:
       title: "SPANISH The final step"
       text: "Some text here too, and it's attached to the right"
       attachTo:
