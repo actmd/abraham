@@ -31,6 +31,9 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
       assert element.text.include? 'step-1'
       assert element.text.include? 'step-2'
       assert element.text.include? 'step-3'
+      assert element.text.include? 'step-4'
+      # Generates a showOn option
+      assert element.text.include? 'showOn:'
       # it will post the right completion information
       assert element.text.include? "controller_name: 'dashboard'"
       assert element.text.include? "action_name: 'home'"
