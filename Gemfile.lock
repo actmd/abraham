@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    abraham (1.1.1)
+    abraham (1.2)
       jquery-rails
       rails (~> 5.0.0, >= 5.0.0.1)
       rails-assets-js-cookie (~> 2.1)
@@ -153,4 +153,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.13.6
+   1.13.7
