@@ -37,6 +37,9 @@
       return document.querySelector("<%= step['attachTo']['element'] %>") ? true : false
     },
     <% end %>
+    <% if step.key?('scrollTo') %>
+    scrollTo: "<%= step['scrollTo'] %>",
+    <% end %>
     buttons: [
     <% if index == 0 %>
       { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
