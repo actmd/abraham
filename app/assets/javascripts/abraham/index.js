@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require js-cookie
 //= require tether
-//= require shepherd.js.js
+//= require tether-shepherd
 
 $(document).on('turbolinks:before-cache', function() {
     // Remove visible product tours
