@@ -3,7 +3,7 @@ PATH
   specs:
     abraham (1.3)
       jquery-rails
-      rails (~> 5.0.0, >= 5.0.0.1)
+      rails (~> 5.0, >= 5.0.0.1)
       rails-assets-js-cookie (~> 2.1)
       rails-assets-shepherd.js (~> 1.8)
       sass-rails (~> 5.0)
