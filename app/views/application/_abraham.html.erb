@@ -5,7 +5,7 @@
     }
   });
 
-  tour.on("complete", function() {
+  tour.on("complete", function () {
     // ajax
     return $.ajax({
       url: "/abraham_histories/",
@@ -20,7 +20,7 @@
     });
   });
 
-  tour.on("cancel", function() {
+  tour.on("cancel", function () {
     Cookies.set('abraham-<%= controller_name %>-<%= action_name %>-<%= tour_name %>', 'later');
   });
 
@@ -31,8 +31,8 @@
     <% end %>
     text: "<%= step['text'] %>",
     <% if step.key?('attachTo') %>
-    attachTo: { element: "<%= step['attachTo']['element'] %>", on: "<%= step['attachTo']['placement'] %>" },
-    showOn: function() {
+    attachTo: {element: "<%= step['attachTo']['element'] %>", on: "<%= step['attachTo']['placement'] %>"},
+    showOn: function () {
       // Only display this step if its selector is present
       return document.querySelector("<%= step['attachTo']['element'] %>") ? true : false
     },
@@ -40,18 +40,27 @@
     <% if step.key?('scrollTo') %>
     scrollTo: "<%= step['scrollTo'] %>",
     <% end %>
-    buttons: [
-    <% if index == 0 %>
-      { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.continue') %>', action: tour.next }
-    <% else %>
-        <% if index == steps.size - 1 %>
-      { text: '<%= t('abraham.done') %>', action: tour.complete }
-        <% else %>
-      { text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.next') %>', action: tour.next }
-        <% end %>
+    <% if step.key?('when') %>
+    when: {
+      show: function () { <%= step['when']['show']&admi.html_safe %>
+      },
+      complete: function () { <%= step['when']['complete']&.html_safe %>
+      }
+    },
+
     <% end %>
+    buttons: [
+      <% if index == 0 %>
+      {text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary'},
+      {text: '<%= t('abraham.continue') %>', action: tour.next}
+      <% else %>
+      <% if index == steps.size - 1 %>
+      {text: '<%= t('abraham.done') %>', action: tour.complete}
+      <% else %>
+      {text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary'},
+      {text: '<%= t('abraham.next') %>', action: tour.next}
+      <% end %>
+      <% end %>
     ]
   });
   <% end %>
