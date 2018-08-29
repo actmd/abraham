@@ -42,7 +42,7 @@
     <% end %>
     <% if step.key?('when') %>
     when: {
-      show: function () { <%= step['when']['show']&admi.html_safe %>
+      show: function () { <%= step['when']['show']&.html_safe %>
       },
       complete: function () { <%= step['when']['complete']&.html_safe %>
       }
