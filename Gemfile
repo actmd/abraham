@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-source 'http://rubygems.org'
-source 'http://rails-assets.org'
+
+source "http://rubygems.org"
+source "http://rails-assets.org"
 
 # Declare your gem's dependencies in abraham.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -9,9 +10,9 @@ gemspec
 
 # These rails-assets dependencies need to be added to the developer's Gemfile
 # since there's no way to specify a source in the gemspec.
-source 'http://rails-assets.org' do
-  gem 'rails-assets-shepherd.js', '~> 1.8'
-  gem 'rails-assets-js-cookie', '~> 2.1'
+source "http://rails-assets.org" do
+  gem "rails-assets-js-cookie", "~> 2.1"
+  gem "rails-assets-shepherd.js", "~> 1.8"
 end
 
 # Declare any dependencies that are still in development here instead of in
@@ -23,4 +24,4 @@ end
 # gem 'byebug', group: [:development, :test]
 
 # Avoid the 'multiple sources' confusion
-gem 'rails-assets-tether', :source => 'http://rails-assets.org/'
+gem "rails-assets-tether", source: "http://rails-assets.org/"
