@@ -16,22 +16,25 @@ Abraham needs to know the current user to track tour views, e.g. `current_user` 
 
 ## Installation
 
-Add `abraham` and its JavaScript dependencies to your Gemfile:
+Add `abraham` to your Gemfile:
 
 ```
 gem 'abraham'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-shepherd.js', '~> 1.8'
-  gem 'rails-assets-js-cookie', '~> 2.1'
-end
 ```
 
-Then run:
+Install the gem and run the installer:
 
 ```
 $ bundle install
 $ rails generate abraham:install
+$ rails db:migrate
+```
+
+Install the JavaScript dependencies:
+
+```
+$ yarn add jquery js-cookie shepherd.js
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`

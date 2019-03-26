@@ -13,6 +13,7 @@
       dataType: "json",
       contentType: "application/json",
       data: JSON.stringify({
+        authenticity_token: '<%= form_authenticity_token %>',
         controller_name: '<%= controller_name %>',
         action_name: '<%= action_name %>',
         tour_name: '<%= tour_name %>'
@@ -21,7 +22,7 @@
   });
 
   tour.on("cancel", function() {
-    Cookies.set('abraham-<%= controller_name %>-<%= action_name %>-<%= tour_name %>', 'later');
+    Cookies.set('<%= abraham_cookie_prefix %>-<%= tour_name %>', 'later', { domain: '<%= abraham_domain %>' });
   });
 
   <% steps.each_with_index do |(key, step), index| %>
@@ -54,7 +55,7 @@
   <% end %>
 
   // Don't start the tour if the user dismissed it once this session
-  if (!Cookies.get('abraham-<%= controller_name %>-<%= action_name %>-<%= tour_name %>')) {
+  if (!Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', { domain: '<%= abraham_domain %>' })) {
     tour.start();
   }
 </script>

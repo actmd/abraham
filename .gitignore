@@ -2,6 +2,7 @@
 capybara-*.html
 .rspec
 /log
+/node_modules
 /tmp
 /test/dummy/log
 /test/dummy/tmp
@@ -15,6 +16,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+yarn-error.log
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
