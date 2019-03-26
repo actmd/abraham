@@ -1,8 +1,6 @@
 //= require jquery
-//= require jquery_ujs
-//= require js-cookie
-//= require tether
-//= require shepherd.js.js
+//= require js-cookie/src/js.cookie
+//= require shepherd.js/dist/js/shepherd
 
 $(document).on('turbolinks:before-cache', function() {
     // Remove visible product tours

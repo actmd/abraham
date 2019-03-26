@@ -23,4 +23,12 @@ module AbrahamHelper
       end
     end
   end
+
+  def abraham_cookie_prefix
+    "abraham-#{Rails.application.class.parent.to_s.underscore}-#{current_user.id}-#{controller_name}-#{action_name}"
+  end
+
+  def abraham_domain
+    request.host
+  end
 end

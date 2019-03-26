@@ -3,6 +3,14 @@
 require "test_helper"
 
 class DashboardControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    I18n.locale = :en
+  end
+
+  teardown do
+    I18n.locale = :en
+  end
+
   test "uses configured shepherd theme" do
     # default
     get dashboard_home_url
@@ -39,6 +47,17 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
       assert element.text.include? "controller_name: 'dashboard'"
       assert element.text.include? "action_name: 'home'"
       assert element.text.include? "tour_name: 'intro'"
+    end
+  end
+
+  test "should show tour for locale" do
+    I18n.locale = :es
+    get dashboard_home_url
+    assert_response :success
+
+    assert_select 'body script' do |element|
+      # it's the spanish home tour
+      assert element.text.include? 'SPANISH This first HOME step is centered text-only'
     end
   end
 
