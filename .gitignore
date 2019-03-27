@@ -3,6 +3,7 @@ capybara-*.html
 .rspec
 /log
 /node_modules
+/pkg
 /tmp
 /test/dummy/log
 /test/dummy/tmp
