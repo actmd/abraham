@@ -133,3 +133,49 @@ Rails.application.configure do
   config.abraham.tours = {}
 end
 ```
+
+## Contributing
+
+Contributions are welcome!
+
+Create a feature branch (using git-flow) and submit as a pull request.
+
+Everyone interacting in Abraham's codebase, issue tracker, etc. is expected to follow the [Contributor Covenent Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct).
+
+### Testing
+
+This Rails engine contains a test app called `dummy` with controller and system tests. They'll all get run with `rails t`.
+
+Final testing should be done in a standalone Rails app, following the README instructions.
+
+To install the `abraham` gem with a local path:
+
+```
+gem 'abraham', path: '~/Workspace/abraham'
+```
+
+### Releasing
+
+Create a git-flow release:
+
+```
+$ git flow release start VERSION_NUMBER
+```
+
+Edit `lib/abraham/version.rb` and increase the version number.
+
+Build the gem and push to Rubygems:
+
+```
+$ rake build
+$ gem push pkg/abraham-VERSION_NUMBER.gem 
+```
+
+Finish the git-flow release and push to GitHub:
+
+```
+$ git flow release finish
+$ git push origin develop
+$ git push origin master
+$ git push --tags
+```
