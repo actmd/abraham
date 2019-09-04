@@ -1,0 +1,14 @@
+language: ruby
+
+env:
+  - 'RAILS_VERSION=5.1'
+  - 'RAILS_VERSION=5.2'
+  - 'RAILS_VERSION=6.0'
+
+before_script:
+  - 'yarn'
+  - 'bundle install'
+  - 'RAILS_ENV=test bundle exec rake db:create'
+  - 'RAILS_ENV=test bundle exec rake db:migrate'
+
+script: 'RAILS_ENV=test bundle exec rails test'
