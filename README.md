@@ -1,5 +1,7 @@
 # Abraham
 
+[![Build Status](https://travis-ci.com/actmd/abraham.svg?branch=master)](https://travis-ci.com/actmd/abraham)
+
 _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
@@ -95,7 +97,7 @@ NB: You must specify a locale in the filename, even if you're only supporting on
 
 ### Tour content
 
-A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout to the left, right, top, or bottom. 
+A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout to the left, right, top, or bottom.
 
 ```yaml
 intro:
@@ -144,6 +146,8 @@ Everyone interacting in Abraham's codebase, issue tracker, etc. is expected to f
 
 ### Testing
 
+#### Testing locally
+
 This Rails engine contains a test app called `dummy` with controller and system tests. They'll all get run with `rails t`.
 
 Final testing should be done in a standalone Rails app, following the README instructions.
@@ -153,6 +157,10 @@ To install the `abraham` gem with a local path:
 ```
 gem 'abraham', path: '~/Workspace/abraham'
 ```
+
+#### Automated testing
+
+We use TravisCI automatically testing this rails engine. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
 
 ### Releasing
 
@@ -168,7 +176,7 @@ Build the gem and push to Rubygems:
 
 ```
 $ rake build
-$ gem push pkg/abraham-VERSION_NUMBER.gem 
+$ gem push pkg/abraham-VERSION_NUMBER.gem
 ```
 
 Finish the git-flow release and push to GitHub:
