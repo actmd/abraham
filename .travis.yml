@@ -1,0 +1,3 @@
+language: ruby
+# command to run tests
+script: rails t
