@@ -10,7 +10,7 @@ rails = case rails_version
         when 'master'
           {github: 'rails/rails'}
         else
-          '~> #{rails_version}'
+          "~> #{rails_version}"
         end
 gem 'rails', rails
 
