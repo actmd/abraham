@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     abraham (1.5.2)
-      rails (~> 5.1)
 
 GEM
   remote: http://rubygems.org/
@@ -184,6 +183,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   listen
   mocha
+  rails (~> 5.1)
   rubocop
   sassc-rails
   selenium-webdriver
@@ -191,4 +191,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   1.17.3
+   1.16.6

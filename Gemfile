@@ -5,12 +5,12 @@ source 'http://rubygems.org'
 # versions for Rails on Travis CI.
 rails_version = ENV['RAILS_VERSION'] || 'default'
 rails = case rails_version
-        when 'master'
-          {github: 'rails/rails'}
         when 'default'
           '~> 5.1'
+        when 'master'
+          {github: 'rails/rails'}
         else
-        '~> #{rails_version}'
+          '~> #{rails_version}'
         end
 gem 'rails', rails
 

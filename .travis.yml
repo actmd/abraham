@@ -2,7 +2,7 @@ language: ruby
 env:
   - 'RAILS_VERSION=5.1'
 before_script:
-  - bundle install
-  - RAILS_ENV=test bundle exec rake db:create
-  - RAILS_ENV=test bundle exec rake db:migrate
-script: RAILS_ENV=test bundle exec rails test
+  - 'bundle install'
+  - 'RAILS_ENV=test bundle exec rake db:create'
+  - 'RAILS_ENV=test bundle exec rake db:migrate'
+script: 'RAILS_ENV=test bundle exec rails test'
