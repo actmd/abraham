@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
+# Set the Rails version. We have this switch so that we can test multiple
+# versions for Rails on Travis CI.
+rails_version = ENV['RAILS_VERSION'] || 'default'
+rails = case rails_version
+        when 'master'
+          {github: 'rails/rails'}
+        when 'default'
+          '~> 5.1'
+        else
+        '~> #{rails_version}'
+        end
+gem 'rails', rails
+
 # Declare your gem's dependencies in abraham.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
