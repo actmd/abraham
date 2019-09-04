@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 
 # Set the Rails version. We have this switch so that we can test multiple
 # versions for Rails on Travis CI.
+# Inspired by http://aaronmiler.com/blog/testing-your-rails-engine-with-multiple-versions-of-rails/
 rails_version = ENV['RAILS_VERSION'] || 'default'
 rails = case rails_version
         when 'default'
