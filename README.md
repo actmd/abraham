@@ -6,7 +6,7 @@ _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
 
-Abraham injects dynamically-generated [Shepherd.js](http://github.hubspot.com/shepherd/docs/welcome/) code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
+Abraham injects dynamically-generated [Shepherd.js](https://shepherdjs.dev/docs/) code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
