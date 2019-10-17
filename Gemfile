@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 source 'http://rubygems.org'
 
+group :development, :test do
+  gem 'sassc-rails'
+end
+
 # Set the Rails version. We have this switch so that we can test multiple
 # versions for Rails on Travis CI.
 # Inspired by http://aaronmiler.com/blog/testing-your-rails-engine-with-multiple-versions-of-rails/

@@ -1,0 +1,40 @@
+@import "_common";
+
+.theme-default.shepherd-element {
+  background: #fff;
+
+  .shepherd-text {
+    color: rgba(0, 0, 0, .75);
+  }
+
+  .shepherd-title {
+    color: rgba(0, 0, 0, .75);
+  }
+
+  &.shepherd-has-title .shepherd-content .shepherd-header {
+    background: #e6e6e6;
+  }
+
+  &.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-arrow,
+  &.shepherd-pinned-top .shepherd-arrow {
+    border-top-color: #fff;
+  }
+
+  &.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-arrow {
+    border-bottom-color: #fff;
+  }
+
+  &.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-arrow {
+    border-bottom-color: #e6e6e6;
+  }
+
+  &.shepherd-element-attached-middle.shepherd-element-attached-left .shepherd-arrow,
+  &.shepherd-pinned-right .shepherd-arrow {
+    border-right-color: #fff;
+  }
+
+  &.shepherd-element-attached-middle.shepherd-element-attached-right .shepherd-arrow,
+  &.shepherd-pinned-left .shepherd-arrow {
+    border-left-color: #fff;
+  }
+}

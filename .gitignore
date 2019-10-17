@@ -17,6 +17,8 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+# Don't commit yarn.lock, to ensure that package.json is specific enough
+yarn.lock
 yarn-error.log
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
@@ -52,3 +54,4 @@ bower.json
 .idea/
 /test/dummy/tmp/
 /test/dummy/log/
+.DS_Store

@@ -1,0 +1,40 @@
+@import "_common";
+
+.theme-dark.shepherd-element {
+  background: #232323;
+
+  .shepherd-text {
+    color: #eee;
+  }
+
+  .shepherd-title {
+    color: #fff;
+  }
+
+  &.shepherd-has-title .shepherd-content .shepherd-header {
+    background: #303030;
+  }
+
+  &.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-arrow,
+  &.shepherd-pinned-top .shepherd-arrow {
+    border-top-color: #232323;
+  }
+
+  &.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-arrow {
+    border-bottom-color: #232323;
+  }
+
+  &.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-arrow {
+    border-bottom-color: #303030;
+  }
+
+  &.shepherd-element-attached-middle.shepherd-element-attached-left .shepherd-arrow,
+  &.shepherd-pinned-right .shepherd-arrow {
+    border-right-color: #232323;
+  }
+
+  &.shepherd-element-attached-middle.shepherd-element-attached-right .shepherd-arrow,
+  &.shepherd-pinned-left .shepherd-arrow {
+    border-left-color: #232323;
+  }
+}
