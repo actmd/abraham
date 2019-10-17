@@ -1,5 +1,5 @@
 defaults: &defaults
-  :default_theme: 'shepherd-theme-default'
+  :tour_options: '{ defaultStepOptions: { classes: "shepherd-theme-dark" } }'
 
 development:
   <<: *defaults

@@ -19,6 +19,6 @@ Rails.application.configure do
 
   abraham_config = Rails.application.config_for :abraham
   config.abraham = ActiveSupport::OrderedOptions.new
-  config.abraham.default_theme = abraham_config[:default_theme]
+  config.abraham.tour_options = abraham_config[:tour_options]
   config.abraham.tours = tours
 end

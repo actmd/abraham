@@ -36,7 +36,7 @@ $ rails db:migrate
 Install the JavaScript dependencies:
 
 ```
-$ yarn add jquery js-cookie shepherd.js
+$ yarn add jquery@^3.4.0 js-cookie@^2.2.0 shepherd.js@^5.0.1
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`
