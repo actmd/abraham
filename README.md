@@ -64,6 +64,8 @@ defaults: &defaults
   :tour_options: '{ defaultStepOptions: { classes: "theme-dark" } }'
 ```
 
+You can also [write your own Shepherd theme](https://shepherdjs.dev/docs/tutorial-03-styling.html) based on Shepherd's [default CSS](https://github.com/shipshapecode/shepherd/releases/download/v6.0.0-beta.1/shepherd.css).
+
 Tell Abraham where to insert its generated JavaScript in `app/views/layouts/application.html.erb`, just before the closing `body` tag:
 
 ```erb
