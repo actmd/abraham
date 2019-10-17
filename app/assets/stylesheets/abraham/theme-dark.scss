@@ -1,40 +1,40 @@
 @import "_common";
 
-.theme-default.shepherd-element {
-  background: #fff;
+.theme-dark.shepherd-element {
+  background: #232323;
 
   .shepherd-text {
-    color: rgba(0, 0, 0, .75);
+    color: #eee;
   }
 
   .shepherd-title {
-    color: rgba(0, 0, 0, .75);
+    color: #fff;
   }
 
   &.shepherd-has-title .shepherd-content .shepherd-header {
-    background: #e6e6e6;
+    background: #303030;
   }
 
   &.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-arrow,
   &.shepherd-pinned-top .shepherd-arrow {
-    border-top-color: #fff;
+    border-top-color: #232323;
   }
 
   &.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-arrow {
-    border-bottom-color: #fff;
+    border-bottom-color: #232323;
   }
 
   &.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-arrow {
-    border-bottom-color: #e6e6e6;
+    border-bottom-color: #303030;
   }
 
   &.shepherd-element-attached-middle.shepherd-element-attached-left .shepherd-arrow,
   &.shepherd-pinned-right .shepherd-arrow {
-    border-right-color: #fff;
+    border-right-color: #232323;
   }
 
   &.shepherd-element-attached-middle.shepherd-element-attached-right .shepherd-arrow,
   &.shepherd-pinned-left .shepherd-arrow {
-    border-left-color: #fff;
+    border-left-color: #232323;
   }
 }
