@@ -11,21 +11,22 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     I18n.locale = :en
   end
 
-  test "uses configured shepherd theme" do
-    # default
+  test "uses configured shepherd configuration" do
+    # No options
+    Rails.configuration.abraham.tour_options = nil
     get dashboard_home_url
     assert_response :success
     assert_select "body script" do |element|
-      # it's the home tour
-      assert element.text.include? "classes: 'shepherd-theme-default'"
+      # No options passed into Tour()
+      assert element.text.include? "new Shepherd.Tour()"
     end
 
-    # custom
-    Rails.configuration.abraham.default_theme = "my-custom-theme"
+    # Custom options
+    Rails.configuration.abraham.tour_options = '{ defaultStepOptions: { classes: "my-custom-class" } }'
     get dashboard_home_url
     assert_select "body script" do |element|
-      # it's the home tour
-      assert element.text.include? "classes: 'my-custom-theme'"
+      # Config-specified options passed into Tour()
+      assert element.text.include? 'new Shepherd.Tour({ defaultStepOptions: { classes: "my-custom-class" } })'
     end
   end
 

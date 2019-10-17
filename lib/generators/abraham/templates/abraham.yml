@@ -1,5 +1,8 @@
 defaults: &defaults
-  :default_theme: 'shepherd-theme-default'
+  # Add any valid Shepherd.js configuration JSON here
+  # and it will be passed into the `new Shepherd.Tour()`
+  # initializer.
+  :tour_options: '{ defaultStepOptions: { classes: "theme-default" } }'
 
 development:
   <<: *defaults

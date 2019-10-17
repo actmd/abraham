@@ -10,10 +10,10 @@ intro:
       text: "Refers to an element that won't exist on the page, should skip to 4"
       attachTo:
         element: "#i-dont-exist"
-        position: "right"
+        placement: "right"
     4:
       title: "SPANISH The final step"
       text: "Some text here too, and it's attached to the right"
       attachTo:
         element: ".notice-me"
-        position: "right"
+        placement: "right"

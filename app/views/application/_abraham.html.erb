@@ -1,9 +1,5 @@
 <script>
-  var tour = new Shepherd.Tour({
-    defaults: {
-      classes: '<%= Rails.configuration.abraham.default_theme %>'
-    }
-  });
+  const tour = new Shepherd.Tour(<%= Rails.configuration.abraham.tour_options.html_safe unless Rails.configuration.abraham.tour_options.nil? %>);
 
   tour.on("complete", function() {
     // ajax
@@ -26,7 +22,8 @@
   });
 
   <% steps.each_with_index do |(key, step), index| %>
-  tour.addStep('step-<%= key %>', {
+  tour.addStep({
+    id: 'step-<%= key %>',
     <% if step.key?('title') %>
     title: "<%= step['title'] %>",
     <% end %>

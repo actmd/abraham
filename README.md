@@ -6,11 +6,12 @@ _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
 
-Abraham injects dynamically-generated [Shepherd.js](http://github.hubspot.com/shepherd/docs/welcome/) code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
+Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaScript code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
 * Plays nicely with Turbolinks.
+* Ships with two basic CSS themes (default & dark) -- or write your own
 
 ## Requirements
 
@@ -36,7 +37,7 @@ $ rails db:migrate
 Install the JavaScript dependencies:
 
 ```
-$ yarn add jquery js-cookie shepherd.js
+$ yarn add jquery@^3.4.0 js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`
@@ -45,28 +46,25 @@ Require `abraham` in `app/assets/javascripts/application.js`
 //= require abraham
 ```
 
-Require a Shepherd.js CSS theme in `app/assets/stylesheets/application.scss`
+Require a CSS theme in `app/assets/stylesheets/application.scss`
 
 ```
-//= require "shepherd.js/dist/css/shepherd-theme-default"
+*= require abraham/theme-default
 ```
 
-Shepherd.js provides the following themes:
+Abraham provides the following themes:
 
-- `shepherd-theme-arrows`
-- `shepherd-theme-arrows-fix`
-- `shepherd-theme-arrows-plain-buttons`
-- `shepherd-theme-dark`
-- `shepherd-theme-default`
-- `shepherd-theme-square`
-- `shepherd-theme-square-dark`
+- `theme-default`
+- `theme-dark`
 
 Update `config/abraham.yml` if you choose a different theme:
 
 ```
 defaults: &defaults
-  :default_theme: 'shepherd-theme-arrows'
+  :tour_options: '{ defaultStepOptions: { classes: "theme-dark" } }'
 ```
+
+You can also [write your own Shepherd theme](https://shepherdjs.dev/docs/tutorial-03-styling.html) based on Shepherd's [default CSS](https://github.com/shipshapecode/shepherd/releases/download/v6.0.0-beta.1/shepherd.css).
 
 Tell Abraham where to insert its generated JavaScript in `app/views/layouts/application.html.erb`, just before the closing `body` tag:
 
@@ -136,6 +134,24 @@ Rails.application.configure do
 end
 ```
 
+## Upgrading from version 1
+
+Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 -- quite a jump, yes.
+
+If you were using Abraham v1, you'll want to take the following steps to upgrade:
+
+1. Update your gem to the latest version
+1. Fix your yarn dependencies to use the right versions
+1. Shepherd no longer provides a set of themes. Abraham maintains two of the legacy themes: default and dark. You'll want to choose one of those or migrate your theme to the new Shepherd structure.
+1. Abraham now exposes the entire Shepherd configuration object, so your `abraham.yml` file should now fully define the `tour_options` value instead of `default_theme`
+1. There's been a slight change to `initializers/abraham.rb`. You can just change line 22 to:
+
+```rb
+config.abraham.tour_options = abraham_config[:tour_options]
+```
+
+If you have any trouble at all, please [submit an issue](https://github.com/actmd/abraham/issues) for assistance!
+
 ## Contributing
 
 Contributions are welcome!
@@ -150,6 +166,8 @@ Everyone interacting in Abraham's codebase, issue tracker, etc. is expected to f
 
 This Rails engine contains a test app called `dummy` with controller and system tests. They'll all get run with `rails t`.
 
+Please note that if you change anything in the `lib/generators` folder (i.e. configuration, intializer, migration) you'll need to migrate the `dummy` app accordingly.
+
 Final testing should be done in a standalone Rails app, following the README instructions.
 
 To install the `abraham` gem with a local path:
@@ -160,7 +178,7 @@ gem 'abraham', path: '~/Workspace/abraham'
 
 #### Automated testing
 
-We use TravisCI automatically testing this rails engine. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
+We use TravisCI to automatically test this engine with Rails 5.1, 5.2, and 6.0. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
 
 ### Releasing
 
