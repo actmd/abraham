@@ -134,6 +134,10 @@ Rails.application.configure do
 end
 ```
 
+## Full example
+
+We provide a [small example app](https://github.com/actmd/abraham-example) that implements abraham, so you can see it in action.
+
 ## Upgrading from version 1
 
 Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 -- quite a jump, yes.
@@ -144,11 +148,7 @@ If you were using Abraham v1, you'll want to take the following steps to upgrade
 1. Fix your yarn dependencies to use the right versions
 1. Shepherd no longer provides a set of themes. Abraham maintains two of the legacy themes: default and dark. You'll want to choose one of those or migrate your theme to the new Shepherd structure.
 1. Abraham now exposes the entire Shepherd configuration object, so your `abraham.yml` file should now fully define the `tour_options` value instead of `default_theme`
-1. There's been a slight change to `initializers/abraham.rb`. You can just change line 22 to:
-
-```rb
-config.abraham.tour_options = abraham_config[:tour_options]
-```
+1. There's been a slight change to `initializers/abraham.rb`. Replace yours with [the latest](https://github.com/actmd/abraham/blob/master/lib/generators/abraham/templates/initializer.rb).
 
 If you have any trouble at all, please [submit an issue](https://github.com/actmd/abraham/issues) for assistance!
 
