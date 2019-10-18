@@ -63,4 +63,12 @@ class ToursTest < ApplicationSystemTestCase
     visit dashboard_home_url
     assert_selector ".shepherd-element", visible: true
   end
+
+  test "navigate with turbolinks between pages with tours" do
+    visit dashboard_home_url
+    assert_selector ".shepherd-element", visible: true
+    # Navigate to other page
+    find("a").click
+    assert_selector ".shepherd-element", visible: true
+  end
 end

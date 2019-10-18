@@ -32,6 +32,10 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+group :development, :test do
+  gem 'turbolinks'
+end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
