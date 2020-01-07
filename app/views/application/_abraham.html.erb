@@ -51,8 +51,14 @@
   });
   <% end %>
 
-  // Don't start the tour if the user dismissed it once this session
-  if (!Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', { domain: '<%= abraham_domain %>' })) {
-    tour.start();
-  }
+  tour.start = function (start) {
+    return function () {
+      // Don't start the tour if the user dismissed it once this session
+      if (!Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'})) {
+        start();
+      }
+    }
+  }(tour.start)
+
+  tour.start()
 </script>
