@@ -54,7 +54,13 @@
   tour.start = function (start) {
     return function () {
       // Don't start the tour if the user dismissed it once this session
-      if (!Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'})) {
+      var tourMayStart = !Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'});
+      <% if steps.first[1]['attachTo'] %>
+      // Don't start the tour if the first step's element is missing
+      tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
+      <% end %>
+      
+      if (tourMayStart) {
         start();
       }
     }

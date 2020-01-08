@@ -71,4 +71,10 @@ class ToursTest < ApplicationSystemTestCase
     find("a").click
     assert_selector ".shepherd-element", visible: true
   end
+
+  test "tour with missing first step attachTo does not appear" do
+    visit dashboard_missing_url
+    # No tour should be visible, since the first step is invalid
+    refute_selector ".shepherd-element"
+  end
 end

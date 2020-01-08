@@ -3,6 +3,9 @@ tour_one:
     1:
       title: "TOUR ONE step one ENGLISH"
       text: "we show this on your first visit"
+      attachTo:
+        element: "p"
+        placement: "top"
 
 tour_two:
   steps:
