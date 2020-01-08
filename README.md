@@ -122,6 +122,11 @@ Abraham takes care of which buttons should appear with each step:
 * "Exit" and "Next" buttons on intermediate steps
 * "Done" button on the last step
 
+Abraham tries to be helpful when your tour steps attach to page elements that are missing:
+
+* If your first step is attached to a particular element, and that element is not present on the page, the tour won't start. ([#28](https://github.com/actmd/abraham/issues/28))
+* If your tour has an intermediate step attached to a missing element, Abraham will skip that step and automatically show the next. ([#6](https://github.com/actmd/abraham/issues/6))
+
 ### Testing your tours
 
 Abraham loads tour definitions once when you start your server. Restart your server to see tour changes.
