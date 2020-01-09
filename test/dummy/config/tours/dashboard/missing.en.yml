@@ -1,0 +1,10 @@
+tour:
+  steps:
+    1:
+      title: "This step points to a missing element"
+      text: "This should not skip to the second step"
+      attachTo:
+        element: "#i-dont-exist"
+        placement: "right"
+    2:
+      text: "You should not see me!"
