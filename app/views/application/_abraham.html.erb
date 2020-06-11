@@ -36,15 +36,21 @@
     },
     <% end %>
     buttons: [
-    <% if index == 0 %>
-      { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.continue') %>', action: tour.next }
+    <% if step.key?('buttons') %>
+        <% step['buttons'].each do |button| %>
+        { text: '<%= button[1]['text']  %>', action: <%= button[1]['action'] %>, classes: '<%= button[1]['classes'] %>'},
+        <% end %>
     <% else %>
-        <% if index == steps.size - 1 %>
-      { text: '<%= t('abraham.done') %>', action: tour.complete }
+        <% if index == 0 %>
+          { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
+          { text: '<%= t('abraham.continue') %>', action: tour.next },
         <% else %>
-      { text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.next') %>', action: tour.next }
+            <% if index == steps.size - 1 %>
+              { text: '<%= t('abraham.done') %>', action: tour.complete },
+            <% else %>
+              { text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
+              { text: '<%= t('abraham.next') %>', action: tour.next }
+            <% end %>
         <% end %>
     <% end %>
     ]
