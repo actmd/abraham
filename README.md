@@ -116,6 +116,10 @@ intro:
         placement: "bottom"
 ```
 
+Placement indicates where the dialog box should appear, relative to the element:
+
+* Possible string values: 'auto', 'auto-start', 'auto-end', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'right', 'right-start', 'right-end', 'left', 'left-start', 'left-end'
+
 Abraham takes care of which buttons should appear with each step:
 
 * "Later" and "Continue" buttons on the first step
@@ -126,6 +130,7 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 * If your first step is attached to a particular element, and that element is not present on the page, the tour won't start. ([#28](https://github.com/actmd/abraham/issues/28))
 * If your tour has an intermediate step attached to a missing element, Abraham will skip that step and automatically show the next. ([#6](https://github.com/actmd/abraham/issues/6))
+
 
 ### Testing your tours
 
