@@ -11,7 +11,7 @@ end
 rails_version = ENV['RAILS_VERSION'] || 'default'
 rails = case rails_version
         when 'default'
-          '~> 5.1'
+          '~> 5.2'
         when 'master'
           {github: 'rails/rails'}
         else
@@ -37,7 +37,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'puma'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'

@@ -15,7 +15,8 @@ Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaSc
 
 ## Requirements
 
-Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham is tested on Rails 5.2, 6.0, and 6.1
 
 ## Installation
 
@@ -211,7 +212,7 @@ gem 'abraham', path: '~/Workspace/abraham'
 
 #### Automated testing
 
-We use TravisCI to automatically test this engine with Rails 5.1, 5.2, and 6.0. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
+We use TravisCI to automatically test this engine with Rails 5.2, 6.0, and 6.1. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
 
 ### Releasing
 
