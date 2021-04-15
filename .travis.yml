@@ -1,10 +1,10 @@
 language: ruby
 
 env:
-  - 'RAILS_VERSION=5.1'
-  - 'RAILS_VERSION=5.2'
-  - 'RAILS_VERSION=6.0'
-  - 'RAILS_VERSION=6.1'
+  - 'RAILS_VERSION=5.1.0'
+  - 'RAILS_VERSION=5.2.0'
+  - 'RAILS_VERSION=6.0.0'
+  - 'RAILS_VERSION=6.1.0'
 
 before_script:
   - 'yarn'
