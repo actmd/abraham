@@ -165,6 +165,20 @@ Create a feature branch (using git-flow) and submit as a pull request.
 
 Everyone interacting in Abraham's codebase, issue tracker, etc. is expected to follow the [Contributor Covenent Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct).
 
+### Getting started with the source code
+
+Abraham uses `rvm` with a gemset to ensure the appropriate version of Ruby and its dependencies. Make sure that's installed before you get started.
+
+```
+~ git clone git@github.com:actmd/abraham.git
+Cloning into 'abraham'...
+~ cd abraham
+ruby-2.5.3 - #gemset created /Users/jon/.rvm/gems/ruby-2.5.3@abraham
+ruby-2.5.3 - #generating abraham wrappers - please wait
+~ bundle install
+~ yarn install
+```
+
 ### Testing
 
 #### Testing locally
