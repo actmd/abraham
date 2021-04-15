@@ -2,7 +2,6 @@
   "name": "abraham",
   "private": true,
   "dependencies": {
-    "jquery": "^3.4.0",
     "js-cookie": "^2.2.0",
     "shepherd.js": "^6.0.0-beta"
   }

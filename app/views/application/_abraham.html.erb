@@ -2,13 +2,11 @@
   var tour = new Shepherd.Tour(<%= Rails.configuration.abraham.tour_options.html_safe unless Rails.configuration.abraham.tour_options.nil? %>);
 
   tour.on("complete", function() {
-    // ajax
-    return $.ajax({
-      url: "/abraham_histories/",
-      type: "POST",
-      dataType: "json",
-      contentType: "application/json",
-      data: JSON.stringify({
+    // Make AJAX call to save history of tour completion
+    return fetch("/abraham_histories/", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         authenticity_token: '<%= form_authenticity_token %>',
         controller_name: '<%= controller_name %>',
         action_name: '<%= action_name %>',
