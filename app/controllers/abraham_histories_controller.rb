@@ -15,7 +15,6 @@ class AbrahamHistoriesController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def abraham_history_params
       params.require(:abraham_history).permit(:controller_name, :action_name, :tour_name)
     end
