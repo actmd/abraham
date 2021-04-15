@@ -1,9 +1,9 @@
 language: ruby
 
 env:
-  - 'RAILS_VERSION=5.1'
-  - 'RAILS_VERSION=5.2'
-  - 'RAILS_VERSION=6.0'
+  - 'RAILS_VERSION=5.2.0'
+  - 'RAILS_VERSION=6.0.0'
+  - 'RAILS_VERSION=6.1.0'
 
 before_script:
   - 'yarn'
@@ -11,4 +11,4 @@ before_script:
   - 'RAILS_ENV=test bundle exec rake db:create'
   - 'RAILS_ENV=test bundle exec rake db:migrate'
 
-script: 'RAILS_ENV=test bundle exec rails test'
+script: 'RAILS_ENV=test bundle exec rake test'
