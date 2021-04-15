@@ -15,7 +15,8 @@ Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaSc
 
 ## Requirements
 
-Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham is tested on Rails 5.2, 6.0, and 6.1
 
 ## Installation
 
@@ -95,7 +96,7 @@ NB: You must specify a locale in the filename, even if you're only supporting on
 
 ### Tour content
 
-A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout to the left, right, top, or bottom.
+A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout in a particular position (see below).
 
 ```yaml
 intro:
@@ -121,6 +122,18 @@ Abraham takes care of which buttons should appear with each step:
 * "Later" and "Continue" buttons on the first step
 * "Exit" and "Next" buttons on intermediate steps
 * "Done" button on the last step
+
+When you specify an `attachTo` element, use the `placement` option to choose where the callout should appear relative to that element:
+
+* `bottom` / `bottom center`
+* `bottom left`
+* `bottom right`
+* `center` / `middle` / `middle center`
+* `left` / `middle left'
+* `right` / `middle right`
+* `top` / `top center`
+* `top left`
+* `top right`
 
 Abraham tries to be helpful when your tour steps attach to page elements that are missing:
 
@@ -161,7 +174,7 @@ If you have any trouble at all, please [submit an issue](https://github.com/actm
 
 Contributions are welcome!
 
-Create a feature branch (using git-flow) and submit as a pull request.
+Create a feature branch (using git-flow) and submit as a pull request (with a base branch of `develop`).
 
 Everyone interacting in Abraham's codebase, issue tracker, etc. is expected to follow the [Contributor Covenent Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct).
 
@@ -176,6 +189,8 @@ Cloning into 'abraham'...
 ruby-2.5.3 - #gemset created /Users/jon/.rvm/gems/ruby-2.5.3@abraham
 ruby-2.5.3 - #generating abraham wrappers - please wait
 ~ bundle install
+Bundle complete! 13 Gemfile dependencies, 73 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
 ~ yarn install
 ```
 
@@ -197,7 +212,7 @@ gem 'abraham', path: '~/Workspace/abraham'
 
 #### Automated testing
 
-We use TravisCI to automatically test this engine with Rails 5.1, 5.2, and 6.0. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
+We use TravisCI to automatically test this engine with Rails 5.2, 6.0, and 6.1. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
 
 ### Releasing
 
