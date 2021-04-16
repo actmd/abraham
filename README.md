@@ -10,6 +10,7 @@ Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaSc
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
+* Trigger tours automatically on page load or manually via JavaScript event.
 * Plays nicely with Turbolinks.
 * Ships with two basic CSS themes (default & dark) -- or write your own
 
@@ -77,7 +78,7 @@ Tell Abraham where to insert its generated JavaScript in `app/views/layouts/appl
 
 ## Defining your tours
 
-Define your tours in the `config/tours` directory. Its directory structure should mirror your application's controllers, and the tour files should mirror your actions/views.
+Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure should mirror your application's controllers, and the tour files should mirror your actions/views.
 
 ```
 config/
@@ -92,11 +93,15 @@ config/
         └── show.es.yml
 ```
 
-NB: You must specify a locale in the filename, even if you're only supporting one language.
+For example, per above, when a Spanish-speaking user visits `/articles/`, they'll see the tours defined by `config/tours/articles/index.es.yml`.
+
+(Note: You must specify a locale in the filename, even if you're only supporting one language.)
 
 ### Tour content
 
-A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout in a particular position (see below).
+Within a tour file, each tour is composed of a series of **steps**. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout in a particular position.
+
+In this example, we define a tour called "intro" with 3 steps:
 
 ```yaml
 intro:
@@ -129,7 +134,7 @@ When you specify an `attachTo` element, use the `placement` option to choose whe
 * `bottom left`
 * `bottom right`
 * `center` / `middle` / `middle center`
-* `left` / `middle left'
+* `left` / `middle left`
 * `right` / `middle right`
 * `top` / `top center`
 * `top left`
@@ -139,6 +144,38 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 * If your first step is attached to a particular element, and that element is not present on the page, the tour won't start. ([#28](https://github.com/actmd/abraham/issues/28))
 * If your tour has an intermediate step attached to a missing element, Abraham will skip that step and automatically show the next. ([#6](https://github.com/actmd/abraham/issues/6))
+
+### Automatic vs. manual tours
+
+By default, Abraham will automatically trigger a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
+
+```yml
+walkthrough:
+  trigger: "manual"
+  steps:
+    1:
+      text: "This walkthrough will show you how to..."
+```
+
+Abraham creates a JavaScript event based on the tour name that you can wire into a link or button on that page. In the above example, you would use the `abraham:walthrough:startNow` event to make the tour appear:
+
+```
+<button id="startTour">Start tour</button>
+
+<script>
+  document.querySelector("#startTour").addEventListener("click", function() {
+    document.dispatchEvent(new Event('abraham:walthrough:startNow'));
+  });
+</script>
+```
+
+...or if you use jQuery:
+
+```
+<script>
+  $("#startTour").on("click", function() { $(document).trigger('abraham:walthrough:startNow'); })
+</script>
+```
 
 ### Testing your tours
 
