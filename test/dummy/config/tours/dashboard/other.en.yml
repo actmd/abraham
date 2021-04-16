@@ -7,8 +7,8 @@ tour_one:
         element: "p"
         placement: "top"
 
-# tour_two:
-#   steps:
-#     1:
-#       title: "TOUR TWO step one ENGLISH"
-#       text: "we show this on your second visit"
+tour_two:
+  steps:
+    1:
+      title: "TOUR TWO step one ENGLISH"
+      text: "we show this on your second visit"

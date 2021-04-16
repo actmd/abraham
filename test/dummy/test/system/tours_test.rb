@@ -93,4 +93,22 @@ class ToursTest < ApplicationSystemTestCase
     # No tour should be visible, since the first step is invalid
     refute_selector ".shepherd-element"
   end
+
+  test "page with two incomplete tours shows them on consecutive visits" do
+    # First tour should appear at first visit
+    visit dashboard_other_url
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-header", text: "TOUR ONE step one ENGLISH"
+    find(".shepherd-button", text: "Done").click
+
+    # Second tour should appear at second visit
+    visit dashboard_other_url
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-header", text: "TOUR TWO step one ENGLISH"
+    find(".shepherd-button", text: "Done").click
+
+    # Now no tours should appear since they're both done
+    visit dashboard_other_url
+    refute_selector ".shepherd-element"
+  end
 end

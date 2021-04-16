@@ -11,15 +11,15 @@
 
 <script>
   document.querySelector("#restart_automatic").addEventListener("click", function() {
-  	document.dispatchEvent(new Event('abraham:intro:start'));
+    Abraham.startTour("intro");
   });
 
   document.querySelector("#show_manual").addEventListener("click", function() {
-  	document.dispatchEvent(new Event('abraham:a_manual_tour:start'));
+    Abraham.startTour("a_manual_tour");
   });
 
   document.querySelector("#show_another_manual").addEventListener("click", function() {
-  	document.dispatchEvent(new Event('abraham:another_manual_tour:start'));
+    Abraham.startTour("another_manual_tour");
   });
 </script>
 

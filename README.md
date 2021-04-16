@@ -6,7 +6,7 @@ _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
 
-Abraham makes it easy to show guided tours to users of your Rails application. Abraham keeps track of whether someone has seen a tour so it doesn't appear again and also lets a user skip until their next visit.
+Abraham makes it easy to show guided tours to users of your Rails application. When Abraham shows a tour, it keeps track of whether the user has completed it (so it doesn't get shown again) or dismissed it for later (so it reappears in a future user session).
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
@@ -157,14 +157,14 @@ walkthrough:
       text: "This walkthrough will show you how to..."
 ```
 
-Abraham creates a JavaScript event based on the tour name that you can wire into a link or button on that page. In the above example, you would use the `abraham:walthrough:start` event to make the tour appear:
+This tour will not start automatically; instead, use the `Abraham.startTour` method with the tour name:
 
 ```
 <button id="startTour">Start tour</button>
 
 <script>
   document.querySelector("#startTour").addEventListener("click", function() {
-    document.dispatchEvent(new Event('abraham:walthrough:start'));
+    Abraham.startTour("walkthrough"));
   });
 </script>
 ```
@@ -173,7 +173,7 @@ Abraham creates a JavaScript event based on the tour name that you can wire into
 
 ```
 <script>
-  $("#startTour").on("click", function() { $(document).trigger('abraham:walthrough:start'); })
+  $("#startTour").on("click", function() { Abraham.startTour('walkthrough'); })
 </script>
 ```
 
