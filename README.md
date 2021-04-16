@@ -10,9 +10,9 @@ Abraham makes it easy to show guided tours to users of your Rails application. W
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
-* Trigger tours automatically on page load or manually via JavaScript event.
+* Trigger tours automatically on page load or manually via JavaScript method.
 * Built with the [Shepherd JS](https://shepherdjs.dev/) library. Plays nicely with Turbolinks.
-* Ships with two basic CSS themes (default & dark) -- or write your own
+* Ships with two basic CSS themes (default & dark) — or write your own
 
 ## Requirements
 
@@ -195,7 +195,7 @@ We provide a [small example app](https://github.com/actmd/abraham-example) that 
 
 ## Upgrading from version 1
 
-Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 -- quite a jump, yes.
+Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 – quite a jump, yes.
 
 If you were using Abraham v1, you'll want to take the following steps to upgrade:
 
