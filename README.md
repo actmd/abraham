@@ -6,12 +6,12 @@ _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
 
-Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaScript code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
+Abraham makes it easy to show guided tours to users of your Rails application. Abraham keeps track of whether someone has seen a tour so it doesn't appear again and also lets a user skip until their next visit.
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
 * Trigger tours automatically on page load or manually via JavaScript event.
-* Plays nicely with Turbolinks.
+* Built with the [Shepherd JS](https://shepherdjs.dev/) library. Plays nicely with Turbolinks.
 * Ships with two basic CSS themes (default & dark) -- or write your own
 
 ## Requirements
@@ -39,7 +39,7 @@ $ rails db:migrate
 Install the JavaScript dependencies:
 
 ```
-$ yarn add jquery@^3.4.0 js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
+$ yarn add js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`
@@ -157,23 +157,23 @@ walkthrough:
       text: "This walkthrough will show you how to..."
 ```
 
-Abraham creates a JavaScript event based on the tour name that you can wire into a link or button on that page. In the above example, you would use the `abraham:walthrough:startNow` event to make the tour appear:
+Abraham creates a JavaScript event based on the tour name that you can wire into a link or button on that page. In the above example, you would use the `abraham:walthrough:start` event to make the tour appear:
 
 ```
 <button id="startTour">Start tour</button>
 
 <script>
   document.querySelector("#startTour").addEventListener("click", function() {
-    document.dispatchEvent(new Event('abraham:walthrough:startNow'));
+    document.dispatchEvent(new Event('abraham:walthrough:start'));
   });
 </script>
 ```
 
-...or if you use jQuery:
+...or if you happen to use jQuery:
 
 ```
 <script>
-  $("#startTour").on("click", function() { $(document).trigger('abraham:walthrough:startNow'); })
+  $("#startTour").on("click", function() { $(document).trigger('abraham:walthrough:start'); })
 </script>
 ```
 

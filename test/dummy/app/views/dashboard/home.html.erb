@@ -5,16 +5,21 @@
     a content element to notice
 </div>
 
+<button id="restart_automatic">Restart the automatic tour</button>
 <button id="show_manual">Show manual tour</button>
 <button id="show_another_manual">Show ANOTHER manual tour</button>
 
 <script>
+  document.querySelector("#restart_automatic").addEventListener("click", function() {
+  	document.dispatchEvent(new Event('abraham:intro:start'));
+  });
+
   document.querySelector("#show_manual").addEventListener("click", function() {
-  	document.dispatchEvent(new Event('abraham:a_manual_tour:startNow'));
+  	document.dispatchEvent(new Event('abraham:a_manual_tour:start'));
   });
 
   document.querySelector("#show_another_manual").addEventListener("click", function() {
-  	document.dispatchEvent(new Event('abraham:another_manual_tour:startNow'));
+  	document.dispatchEvent(new Event('abraham:another_manual_tour:start'));
   });
 </script>
 

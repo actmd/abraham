@@ -51,30 +51,32 @@
   });
   <% end %>
 
-  // Dispatch this event to do cookie and element checks before starting (default)
-  document.addEventListener('abraham:<%= tour_name %>:start', function() {
-    // Don't start tour if a cookie says not to
-    var tourMayStart = !Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'});
-    <% if steps.first[1]['attachTo'] %>
-      // Don't start the tour if the first step's element is missing
-      tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
-    <% end %>
-    if (tourMayStart) {
-      document.dispatchEvent(new Event('abraham:<%= tour_name %>:startNow'));
-    }
-  });
+  <% if trigger != "manual" %>
+    abraham_tour_<%= tour_name %>.start = function (start) {
+      return function () {
+        // Don't start the tour if the user dismissed it once this session
+        var tourMayStart = !Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'});
+        <% if steps.first[1]['attachTo'] %>
+        // Don't start the tour if the first step's element is missing
+        tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
+        <% end %>
+        
+        if (tourMayStart) {
+          start();
+        }
+      }
+    }(abraham_tour_<%= tour_name %>.start)
 
-  // Dispatch this event to start the tour manually
-  document.addEventListener('abraham:<%= tour_name %>:startNow', function() {
+    <% if !tour_completed %>
+    abraham_tour_<%= tour_name %>.start();
+    <% end %>
+  <% end %>
+
+  document.addEventListener('abraham:<%= tour_name %>:start', function() {
     // Don't start the tour if another one is already active on the screen
     if (!Shepherd.activeTour) {
       abraham_tour_<%= tour_name %>.start();
     }
   });
 
-  <% if !tour_completed && trigger != 'manual' %>
-  abrahamReady(function() {
-    document.dispatchEvent(new Event('abraham:<%= tour_name %>:start'));
-  });
-  <% end %>
 </script>
