@@ -78,7 +78,7 @@ Tell Abraham where to insert its generated JavaScript in `app/views/layouts/appl
 
 ## Defining your tours
 
-Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure should mirror your application's controllers, and the tour files should mirror your actions/views.
+Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure mirrors your application's controllers, and the tour files mirror your actions/views.
 
 ```
 config/
@@ -99,7 +99,7 @@ For example, per above, when a Spanish-speaking user visits `/articles/`, they'l
 
 ### Tour content
 
-Within a tour file, each tour is composed of a series of **steps**. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout in a particular position.
+Within a tour file, each tour is composed of a series of **steps**. A step may have a `title` and must have `text`. You may attach a step to a particular element on the page, and place the callout in a particular position.
 
 In this example, we define a tour called "intro" with 3 steps:
 
@@ -147,7 +147,7 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 ### Automatic vs. manual tours
 
-By default, Abraham will automatically trigger a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
+By default, Abraham will automatically start a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
 
 ```yml
 walkthrough:
@@ -191,7 +191,7 @@ end
 
 ## Full example
 
-We provide a [small example app](https://github.com/actmd/abraham-example) that implements abraham, so you can see it in action.
+We provide a [small example app](https://github.com/actmd/abraham-example) that implements Abraham, so you can see it in action.
 
 ## Upgrading from version 1
 
