@@ -6,12 +6,13 @@ _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
 
-Abraham injects dynamically-generated [Shepherd](https://shepherdjs.dev/) JavaScript code into your Rails application whenever a user should see a guided tour. Skip a tour, and we'll try again next time; complete a tour, and it won't show up again.
+Abraham makes it easy to show guided tours to users of your Rails application. When Abraham shows a tour, it keeps track of whether the user has completed it (so it doesn't get shown again) or dismissed it for later (so it reappears in a future user session).
 
 * Define tour content with simple YAML files, in any/many languages.
 * Organize tours by controller and action.
-* Plays nicely with Turbolinks.
-* Ships with two basic CSS themes (default & dark) -- or write your own
+* Trigger tours automatically on page load or manually via JavaScript method.
+* Built with the [Shepherd JS](https://shepherdjs.dev/) library. Plays nicely with Turbolinks.
+* Ships with two basic CSS themes (default & dark) — or write your own
 
 ## Requirements
 
@@ -38,7 +39,7 @@ $ rails db:migrate
 Install the JavaScript dependencies:
 
 ```
-$ yarn add jquery@^3.4.0 js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
+$ yarn add js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`
@@ -77,7 +78,7 @@ Tell Abraham where to insert its generated JavaScript in `app/views/layouts/appl
 
 ## Defining your tours
 
-Define your tours in the `config/tours` directory. Its directory structure should mirror your application's controllers, and the tour files should mirror your actions/views.
+Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure mirrors your application's controllers, and the tour files mirror your actions/views.
 
 ```
 config/
@@ -92,11 +93,15 @@ config/
         └── show.es.yml
 ```
 
-NB: You must specify a locale in the filename, even if you're only supporting one language.
+For example, per above, when a Spanish-speaking user visits `/articles/`, they'll see the tours defined by `config/tours/articles/index.es.yml`.
+
+(Note: You must specify a locale in the filename, even if you're only supporting one language.)
 
 ### Tour content
 
-A tour is composed of a series of steps. A step may have a title and must have a description. You may attach a step to a particular element on the page, and place the callout in a particular position (see below).
+Within a tour file, each tour is composed of a series of **steps**. A step may have a `title` and must have `text`. You may attach a step to a particular element on the page, and place the callout in a particular position.
+
+In this example, we define a tour called "intro" with 3 steps:
 
 ```yaml
 intro:
@@ -129,7 +134,7 @@ When you specify an `attachTo` element, use the `placement` option to choose whe
 * `bottom left`
 * `bottom right`
 * `center` / `middle` / `middle center`
-* `left` / `middle left'
+* `left` / `middle left`
 * `right` / `middle right`
 * `top` / `top center`
 * `top left`
@@ -139,6 +144,38 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 * If your first step is attached to a particular element, and that element is not present on the page, the tour won't start. ([#28](https://github.com/actmd/abraham/issues/28))
 * If your tour has an intermediate step attached to a missing element, Abraham will skip that step and automatically show the next. ([#6](https://github.com/actmd/abraham/issues/6))
+
+### Automatic vs. manual tours
+
+By default, Abraham will automatically start a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
+
+```yml
+walkthrough:
+  trigger: "manual"
+  steps:
+    1:
+      text: "This walkthrough will show you how to..."
+```
+
+This tour will not start automatically; instead, use the `Abraham.startTour` method with the tour name:
+
+```
+<button id="startTour">Start tour</button>
+
+<script>
+  document.querySelector("#startTour").addEventListener("click", function() {
+    Abraham.startTour("walkthrough"));
+  });
+</script>
+```
+
+...or if you happen to use jQuery:
+
+```
+<script>
+  $("#startTour").on("click", function() { Abraham.startTour('walkthrough'); })
+</script>
+```
 
 ### Testing your tours
 
@@ -154,11 +191,11 @@ end
 
 ## Full example
 
-We provide a [small example app](https://github.com/actmd/abraham-example) that implements abraham, so you can see it in action.
+We provide a [small example app](https://github.com/actmd/abraham-example) that implements Abraham, so you can see it in action.
 
 ## Upgrading from version 1
 
-Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 -- quite a jump, yes.
+Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 – quite a jump, yes.
 
 If you were using Abraham v1, you'll want to take the following steps to upgrade:
 

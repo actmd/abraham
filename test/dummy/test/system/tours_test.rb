@@ -17,6 +17,11 @@ class ToursTest < ApplicationSystemTestCase
     assert_selector ".shepherd-button", text: "Continue"
     find(".shepherd-button", text: "Continue").click
 
+    # Now try to manually trigger another tour
+    find('#show_manual').click
+    # Even though we triggered another tour, it should not appear since one is already active
+    assert_selector ".shepherd-element", count: 1, visible: true
+
     # Tour Step 2
     assert_selector ".shepherd-header", text: "ENGLISH This step has a title"
     assert_selector ".shepherd-text", text: "ENGLISH This intermediate step has some text"
@@ -40,6 +45,17 @@ class ToursTest < ApplicationSystemTestCase
     # Tour should not reappear on reload
     visit dashboard_home_url
     refute_selector ".shepherd-element"
+
+    # Now start a manual tour
+    find('#show_manual').click
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-text", text: "You triggered the manual tour"
+    assert_selector ".shepherd-button", text: "Done"
+    find(".shepherd-button", text: "Done").click
+
+    # Even though we finished the manual tour, we can start it again right away
+    find('#show_manual').click
+    assert_selector ".shepherd-element", visible: true
   end
 
   test "mark a tour for Later and it will not come back in this session" do
@@ -75,6 +91,24 @@ class ToursTest < ApplicationSystemTestCase
   test "tour with missing first step attachTo does not appear" do
     visit dashboard_missing_url
     # No tour should be visible, since the first step is invalid
+    refute_selector ".shepherd-element"
+  end
+
+  test "page with two incomplete tours shows them on consecutive visits" do
+    # First tour should appear at first visit
+    visit dashboard_other_url
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-header", text: "TOUR ONE step one ENGLISH"
+    find(".shepherd-button", text: "Done").click
+
+    # Second tour should appear at second visit
+    visit dashboard_other_url
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-header", text: "TOUR TWO step one ENGLISH"
+    find(".shepherd-button", text: "Done").click
+
+    # Now no tours should appear since they're both done
+    visit dashboard_other_url
     refute_selector ".shepherd-element"
   end
 end

@@ -1,7 +1,8 @@
 <script>
-  var tour = new Shepherd.Tour(<%= Rails.configuration.abraham.tour_options.html_safe unless Rails.configuration.abraham.tour_options.nil? %>);
+  Abraham.tours["<%= tour_name %>"] = new Shepherd.Tour(<%= Rails.configuration.abraham.tour_options.html_safe unless Rails.configuration.abraham.tour_options.nil? %>);
 
-  tour.on("complete", function() {
+  <% if trigger != 'manual' %>
+  Abraham.tours["<%= tour_name %>"].on("complete", function() {
     // Make AJAX call to save history of tour completion
     return fetch("/abraham_histories/", {
       method: "POST",
@@ -15,12 +16,13 @@
     });
   });
 
-  tour.on("cancel", function() {
+  Abraham.tours["<%= tour_name %>"].on("cancel", function() {
     Cookies.set('<%= abraham_cookie_prefix %>-<%= tour_name %>', 'later', { domain: '<%= abraham_domain %>' });
   });
+  <% end %>
 
   <% steps.each_with_index do |(key, step), index| %>
-  tour.addStep({
+  Abraham.tours["<%= tour_name %>"].addStep({
     id: 'step-<%= key %>',
     <% if step.key?('title') %>
     title: "<%= step['title'] %>",
@@ -34,35 +36,40 @@
     },
     <% end %>
     buttons: [
-    <% if index == 0 %>
-      { text: '<%= t('abraham.later') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.continue') %>', action: tour.next }
+    <% if index == steps.size - 1 %>
+      { text: '<%= t('abraham.done') %>', action: Abraham.tours["<%= tour_name %>"].complete }
     <% else %>
-        <% if index == steps.size - 1 %>
-      { text: '<%= t('abraham.done') %>', action: tour.complete }
-        <% else %>
-      { text: '<%= t('abraham.exit') %>', action: tour.cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.next') %>', action: tour.next }
-        <% end %>
+      <% if index == 0 %>
+        { text: '<%= t('abraham.later') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
+        { text: '<%= t('abraham.continue') %>', action: Abraham.tours["<%= tour_name %>"].next }
+      <% else %>
+      { text: '<%= t('abraham.exit') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
+      { text: '<%= t('abraham.next') %>', action: Abraham.tours["<%= tour_name %>"].next }
+      <% end %>
     <% end %>
     ]
   });
   <% end %>
 
-  tour.start = function (start) {
-    return function () {
-      // Don't start the tour if the user dismissed it once this session
-      var tourMayStart = !Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'});
-      <% if steps.first[1]['attachTo'] %>
-      // Don't start the tour if the first step's element is missing
-      tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
-      <% end %>
-      
-      if (tourMayStart) {
-        start();
+  <% if trigger != "manual" %>
+    Abraham.tours["<%= tour_name %>"].checkAndStart = function (start) {
+      return function () {
+        // Don't start the tour if the user dismissed it once this session
+        var tourMayStart = !Cookies.get('<%= abraham_cookie_prefix %>-<%= tour_name %>', {domain: '<%= abraham_domain %>'});
+        <% if steps.first[1]['attachTo'] %>
+        // Don't start the tour if the first step's element is missing
+        tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
+        <% end %>
+        
+        if (tourMayStart) {
+          start();
+        }
       }
-    }
-  }(tour.start)
+    }(Abraham.tours["<%= tour_name %>"].start)
 
-  tour.start()
+    <% if !tour_completed %>
+    Abraham.incompleteTours.push("<%= tour_name %>");
+    <% end %>
+  <% end %>
+
 </script>

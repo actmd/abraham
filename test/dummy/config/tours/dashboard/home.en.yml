@@ -17,3 +17,13 @@ intro:
       attachTo:
         element: ".notice-me"
         placement: "right"
+a_manual_tour:
+  trigger: manual
+  steps:
+    1:
+      text: "You triggered the manual tour"
+another_manual_tour:
+  trigger: manual
+  steps:
+    1:
+      text: "You triggered the OTHER manual tour"
