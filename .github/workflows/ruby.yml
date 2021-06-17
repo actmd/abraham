@@ -24,6 +24,7 @@ jobs:
       env:
         RAILS_VERSION: ${{ matrix.rails-version }}
       uses: ruby/setup-ruby@v1
+      with:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Install JS dependencies
       run: yarn
