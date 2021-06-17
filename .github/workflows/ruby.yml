@@ -22,12 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+    - name: Generate lockfile
       env:
         RAILS_VERSION: ${{ matrix.rails-version }}
-      uses: ruby/setup-ruby@v1
-      # with:
-      #   bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Generate lockfile
       run: bundle lock
     - name: Cache dependencies
       uses: actions/cache@v1
