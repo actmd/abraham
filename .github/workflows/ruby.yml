@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, develop ]
   pull_request:
-    branches: [ develop ]
+    branches: "*"
 
 jobs:
   test:
@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - rails-version: "5.2.0"
@@ -24,8 +25,19 @@ jobs:
       env:
         RAILS_VERSION: ${{ matrix.rails-version }}
       uses: ruby/setup-ruby@v1
+      # with:
+      #   bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Generate lockfile
+      run: bundle lock
+    - name: Cache dependencies
+      uses: actions/cache@v1
       with:
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('Gemfile.lock') }}
+    - name: Install dependencies
+      run: bundle config path vendor/bundle
+      run: gem install bundler --conservative
+      run: bundle check || bundle install
     - name: Install JS dependencies
       run: yarn
     - name: Create database
