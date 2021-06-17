@@ -9,7 +9,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         authenticity_token: '<%= form_authenticity_token %>',
-        controller_name: '<%= controller_name %>',
+        controller_name: '<%= controller_path %>',
         action_name: '<%= action_name %>',
         tour_name: '<%= tour_name %>'
       })
