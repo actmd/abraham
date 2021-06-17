@@ -35,9 +35,10 @@ jobs:
         path: vendor/bundle
         key: bundle-${{ hashFiles('Gemfile.lock') }}
     - name: Install dependencies
-      run: bundle config path vendor/bundle
-      run: gem install bundler --conservative
-      run: bundle check || bundle install
+      run: |
+        bundle config path vendor/bundle
+        gem install bundler --conservative
+        bundle check || bundle install
     - name: Install JS dependencies
       run: yarn
     - name: Create database
