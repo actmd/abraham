@@ -264,7 +264,7 @@ gem 'abraham', path: '~/Workspace/abraham'
 
 #### Automated testing
 
-We use TravisCI to automatically test this engine with Rails 5.2, 6.0, and 6.1. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
+We use GitHub Actions to automatically test this engine with Rails 5.2, 6.0, and 6.1.
 
 ### Releasing
 

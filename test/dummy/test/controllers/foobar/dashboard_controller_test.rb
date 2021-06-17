@@ -3,14 +3,6 @@
 require "test_helper"
 
 class Foobar::DashboardControllerTest < ActionDispatch::IntegrationTest
-  # setup do
-  #   I18n.locale = :en
-  # end
-
-  # teardown do
-  #   I18n.locale = :en
-  # end
-
   test "home should have home tour code" do
     get foobar_dashboard_home_url
     assert_response :success
