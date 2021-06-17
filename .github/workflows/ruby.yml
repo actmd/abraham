@@ -1,0 +1,33 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - rails-version: "5.2.0"
+          - rails-version: "6.0.0"
+          - rails-version: "6.1.0"
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      env:
+        RAILS_VERSION: ${{ matrix.rails-version }}
+      uses: ruby/setup-ruby@v1
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install JS dependencies
+      run: yarn
+    - name: Create database
+      run: RAILS_ENV=test bundle exec rake db:create db:migrate
+    - name: Run tests
+      run: RAILS_ENV=test bundle exec rake test
