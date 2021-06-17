@@ -2,18 +2,19 @@
 
 Rails.application.configure do
   tours = {}
+  tours_root = Pathname.new(Rails.root.join("config/tours"))
 
   if Rails.root.join("config/tours").exist?
-    Dir[Rails.root.join("config/tours/*/")].each do |dir|
-      Dir[dir + "*.yml"].each do |yml|
-        path_parts = yml.split(File::SEPARATOR)
-        controller = path_parts[path_parts.size - 2]
-        file_parts = path_parts[path_parts.size - 1].split(".")
-        action = file_parts[0]
-        locale = file_parts[1]
-        t = YAML.load_file(yml)
-        tours["#{controller}.#{action}.#{locale}"] = t
-      end
+    Dir.glob(Rails.root.join("config/tours/**/*.yml")).each do |yml|
+      relative_filename = Pathname.new(yml).relative_path_from(tours_root)
+      # `controller_path` is either "controller_name" or "module_name/controller_name"
+      controller_path, filename = relative_filename.split
+      file_parts = filename.to_s.split(".")
+      action = file_parts[0]
+      locale = file_parts[1]
+      t = YAML.load_file(yml)
+      tours["#{controller_path}.#{action}.#{locale}"] = t
+      puts "#{controller_path}.#{action}.#{locale}"
     end
   end
 

@@ -3,15 +3,15 @@
 module AbrahamHelper
   def abraham_tour
     # Do we have tours for this controller/action in the user's locale?
-    tours = Rails.configuration.abraham.tours["#{controller_name}.#{action_name}.#{I18n.locale}"]
+    tours = Rails.configuration.abraham.tours["#{controller_path}.#{action_name}.#{I18n.locale}"]
     # Otherwise, default to the default locale
-    tours ||= Rails.configuration.abraham.tours["#{controller_name}.#{action_name}.#{I18n.default_locale}"]
+    tours ||= Rails.configuration.abraham.tours["#{controller_path}.#{action_name}.#{I18n.default_locale}"]
 
     if tours
       # Have any automatic tours been completed already?
       completed = AbrahamHistory.where(
         creator_id: current_user.id,
-        controller_name: controller_name,
+        controller_name: controller_path,
         action_name: action_name
       )
 
@@ -33,7 +33,7 @@ module AbrahamHelper
   end
 
   def abraham_cookie_prefix
-    "abraham-#{fetch_application_name.to_s.underscore}-#{current_user.id}-#{controller_name}-#{action_name}"
+    "abraham-#{fetch_application_name.to_s.underscore}-#{current_user.id}-#{controller_path}-#{action_name}"
   end
 
   def fetch_application_name
@@ -43,7 +43,6 @@ module AbrahamHelper
       Rails.application.class.parent
     end
   end
-
 
   def abraham_domain
     request.host
