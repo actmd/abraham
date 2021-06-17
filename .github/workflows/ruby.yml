@@ -1,0 +1,46 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: "*"
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rails-version: "5.2.0"
+          - rails-version: "6.0.0"
+          - rails-version: "6.1.0"
+
+    env:
+      RAILS_VERSION: ${{ matrix.rails-version }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+    - name: Generate lockfile
+      run: bundle lock
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('Gemfile.lock') }}
+    - name: Install dependencies
+      run: |
+        bundle config path vendor/bundle
+        gem install bundler --conservative
+        bundle check || bundle install
+    - name: Install JS dependencies
+      run: yarn
+    - name: Create database
+      run: bundle exec rake db:create db:migrate
+    - name: Run tests
+      run: bundle exec rake test

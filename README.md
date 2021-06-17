@@ -78,12 +78,15 @@ Tell Abraham where to insert its generated JavaScript in `app/views/layouts/appl
 
 ## Defining your tours
 
-Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure mirrors your application's controllers, and the tour files mirror your actions/views.
+Define your tours in the `config/tours` directory corresponding to the views defined in your application. Its directory structure mirrors your application's controllers, and the tour files mirror your actions/views. (As of version 2.4.0, Abraham respects controllers organized into modules.)
 
 ```
 config/
 └── tours/
-    └── blog/
+    ├── admin/
+    │   └── articles/  
+    │       └── edit.en.yml    
+    ├── blog/
     │   ├── show.en.yml
     │   └── show.es.yml    
     └── articles/
@@ -147,7 +150,8 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 ### Automatic vs. manual tours
 
-By default, Abraham will automatically start a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
+By default, Abraham will automatically start a tour that the current user hasn't seen yet.
+You can instead define a tour to be triggered manually using the `trigger` option:
 
 ```yml
 walkthrough:
@@ -193,7 +197,18 @@ end
 
 We provide a [small example app](https://github.com/actmd/abraham-example) that implements Abraham, so you can see it in action.
 
-## Upgrading from version 1
+## Upgrading
+
+### From version 2.3.0 or earlier
+
+Abraham 2.4.0 introduced an updated initializer that supports controllers organized into modules.
+Rerun the generator with these options to replace the old initializer:
+
+```
+$ rails generate abraham:install --skip-migration --skip-config
+```
+
+### From version 1
 
 Abraham v1 was built using Shepherd 1.8, v2 now uses Shepherd 6 – quite a jump, yes.
 
@@ -249,7 +264,7 @@ gem 'abraham', path: '~/Workspace/abraham'
 
 #### Automated testing
 
-We use TravisCI to automatically test this engine with Rails 5.2, 6.0, and 6.1. For test history, venture over to [TravisCI](https://travis-ci.com/actmd/abraham).
+We use GitHub Actions to automatically test this engine with Rails 5.2, 6.0, and 6.1.
 
 ### Releasing
 
