@@ -150,7 +150,8 @@ Abraham tries to be helpful when your tour steps attach to page elements that ar
 
 ### Automatic vs. manual tours
 
-By default, Abraham will automatically start a tour that the current user hasn't seen yet. You can instead define a tour to be triggered manually using the `trigger` option:
+By default, Abraham will automatically start a tour that the current user hasn't seen yet.
+You can instead define a tour to be triggered manually using the `trigger` option:
 
 ```yml
 walkthrough:
