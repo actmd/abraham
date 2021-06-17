@@ -14,7 +14,6 @@ Rails.application.configure do
       locale = file_parts[1]
       t = YAML.load_file(yml)
       tours["#{controller_path}.#{action}.#{locale}"] = t
-      puts "#{controller_path}.#{action}.#{locale}"
     end
   end
 
