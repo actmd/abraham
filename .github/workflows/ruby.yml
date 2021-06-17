@@ -19,13 +19,14 @@ jobs:
           - rails-version: "6.0.0"
           - rails-version: "6.1.0"
 
+    env:
+      RAILS_VERSION: ${{ matrix.rails-version }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
     - name: Generate lockfile
-      env:
-        RAILS_VERSION: ${{ matrix.rails-version }}
       run: bundle lock
     - name: Cache dependencies
       uses: actions/cache@v1
