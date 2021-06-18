@@ -2,6 +2,7 @@
 
 class AbrahamHistoriesController < ApplicationController
   def create
+    head :no_content if current_user.blank? || (current_user.respond_to?(:guest?) && current_user.guest?)
     @abraham_history = AbrahamHistory.new(abraham_history_params)
     @abraham_history.creator_id = current_user.id
     respond_to do |format|
