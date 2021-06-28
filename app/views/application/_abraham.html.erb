@@ -4,7 +4,7 @@
   <% if trigger != 'manual' %>
   Abraham.tours["<%= tour_name %>"].on("complete", function() {
     // Make AJAX call to save history of tour completion
-    return fetch("/abraham_histories/", {
+    return fetch('<%= abraham.histories_path %>', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
-  resources :abraham_histories, only: :create
+Abraham::Engine.routes.draw do
+  resources :histories, only: :create
 end
