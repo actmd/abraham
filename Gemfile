@@ -1,9 +1,6 @@
 # frozen_string_literal: true
-source 'http://rubygems.org'
 
-group :development, :test do
-  gem 'sassc-rails'
-end
+source 'http://rubygems.org'
 
 # Set the Rails version. We have this switch so that we can test multiple
 # versions for Rails on Travis CI.
@@ -13,7 +10,7 @@ rails = case rails_version
         when 'default'
           '~> 5.2'
         when 'master'
-          {github: 'rails/rails'}
+          { github: 'rails/rails' }
         else
           "~> #{rails_version}"
         end

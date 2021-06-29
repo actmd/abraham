@@ -9,7 +9,7 @@ module AbrahamHelper
 
     if tours
       # Have any automatic tours been completed already?
-      completed = AbrahamHistory.where(
+      completed = Abraham::History.where(
         creator_id: current_user.id,
         controller_name: controller_path,
         action_name: action_name
@@ -21,11 +21,11 @@ module AbrahamHelper
       tour_html = ''
 
       tour_keys.each do |key|
-        tour_html += render(partial: "application/abraham",
-               locals: { tour_name: key,
-                         tour_completed: tour_keys_completed.include?(key),
-                         trigger: tours[key]["trigger"],
-                         steps: tours[key]["steps"] })
+        tour_html += render(partial: 'application/abraham',
+                            locals: { tour_name: key,
+                                      tour_completed: tour_keys_completed.include?(key),
+                                      trigger: tours[key]['trigger'],
+                                      steps: tours[key]['steps'] })
       end
 
       tour_html.html_safe
