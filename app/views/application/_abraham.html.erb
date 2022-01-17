@@ -35,6 +35,9 @@
       return document.querySelector("<%= escape_javascript(step['attachTo']['element'].html_safe) %>") ? true : false
     },
     <% end %>
+    <% if step.key?('beforeShowPromise') %>
+    beforeShowPromise: <%= step['beforeShowPromise'] %>,
+    <% end %>
     buttons: [
     <% if step.key?('buttons') %>
       <% step['buttons'].each do |button| %>
