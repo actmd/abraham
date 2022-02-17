@@ -16,7 +16,8 @@ Abraham makes it easy to show guided tours to users of your Rails application. W
 
 ## Requirements
 
-* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise. (If you are using a different method to identify who is currently logged in, you can, for example, add an alias to make it work. Assuming you have a method `current_foo` to identify your currenly logged-in user, you can add `alias_method 'current_user', 'current_foo'` in the place you define `current_foo`.)
+* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+  * If you are using a different method to identify who is currently logged in, you can, for example, add an alias to make it work. Assuming you have a method `current_foo` to identify your currenly logged-in user, you can add `alias_method 'current_user', 'current_foo'` in the place you define `current_foo`.
 * Abraham is tested on Rails 5.2, 6.0, and 6.1
 
 ## Installation
