@@ -36,15 +36,21 @@
     },
     <% end %>
     buttons: [
-    <% if index == steps.size - 1 %>
-      { text: '<%= t('abraham.done') %>', action: Abraham.tours["<%= tour_name %>"].complete }
+    <% if step.key?('buttons') %>
+      <% step['buttons'].each do |button| %>
+        { text: '<%= button[1]['text']  %>', action: Abraham.tours["<%= tour_name %>"].<%= button[1]['action'] %>, classes: '<%= button[1]['classes'] %>' },
+      <% end %>
     <% else %>
-      <% if index == 0 %>
-        { text: '<%= t('abraham.later') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
-        { text: '<%= t('abraham.continue') %>', action: Abraham.tours["<%= tour_name %>"].next }
+      <% if index == steps.size - 1 %>
+        { text: '<%= t('abraham.done') %>', action: Abraham.tours["<%= tour_name %>"].complete }
       <% else %>
-      { text: '<%= t('abraham.exit') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
-      { text: '<%= t('abraham.next') %>', action: Abraham.tours["<%= tour_name %>"].next }
+        <% if index == 0 %>
+          { text: '<%= t('abraham.later') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
+          { text: '<%= t('abraham.continue') %>', action: Abraham.tours["<%= tour_name %>"].next }
+        <% else %>
+        { text: '<%= t('abraham.exit') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
+        { text: '<%= t('abraham.next') %>', action: Abraham.tours["<%= tour_name %>"].next }
+        <% end %>
       <% end %>
     <% end %>
     ]

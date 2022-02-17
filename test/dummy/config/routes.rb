@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "dashboard/other"
   get "dashboard/placement"
   get "dashboard/missing"
+  get "dashboard/buttons"
 
   namespace :foobar do
     get "dashboard/home"

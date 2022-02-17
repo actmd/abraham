@@ -1,0 +1,13 @@
+button_tour:
+  steps:
+    1:
+      text: "SPANISH custom buttons"
+      buttons:
+        1:
+          text: 'Mas tarde'
+          action: 'cancel'
+          classes: 'custom-button shepherd-button-secondary'
+        2:
+          text: 'Ahora'
+          action: 'complete'
+          classes: 'custom-button'

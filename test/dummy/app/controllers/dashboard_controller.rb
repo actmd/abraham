@@ -5,4 +5,5 @@ class DashboardController < ApplicationController
   def other; end
   def placement; end
   def missing; end
+  def buttons; end
 end

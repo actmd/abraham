@@ -16,7 +16,7 @@ Abraham makes it easy to show guided tours to users of your Rails application. W
 
 ## Requirements
 
-* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise. (If you are using a different method to identify who is currently logged in, you can, for example, add an alias to make it work. Assuming you have a method `current_foo` to identify your currenly logged-in user, you can add `alias_method 'current_user', 'current_foo'` in the place you define `current_foo`.)
 * Abraham is tested on Rails 5.2, 6.0, and 6.1
 
 ## Installation
@@ -131,6 +131,8 @@ Abraham takes care of which buttons should appear with each step:
 * "Exit" and "Next" buttons on intermediate steps
 * "Done" button on the last step
 
+See below for how to define custom buttons.
+
 When you specify an `attachTo` element, use the `placement` option to choose where the callout should appear relative to that element:
 
 * `bottom` / `bottom center`
@@ -180,6 +182,29 @@ This tour will not start automatically; instead, use the `Abraham.startTour` met
   $("#startTour").on("click", function() { Abraham.startTour('walkthrough'); })
 </script>
 ```
+
+### Custom buttons
+
+You can define custom buttons in a step like so:
+
+```
+my_tour:
+  steps:
+    1:
+      text: "Welcome to my custom button tour"
+      buttons:
+        1:
+          text: 'Show this to me later'
+          action: 'cancel'
+          classes: 'custom-button shepherd-button-secondary'
+        2:
+          text: 'Finish now'
+          action: 'complete'
+          classes: 'custom-button'
+```
+
+* `action` is one of the Shepherd tour method names, i.e. `cancel`, `next`, or `complete`
+* `classes` are the CSS class names you want applied to the button
 
 ### Testing your tours
 

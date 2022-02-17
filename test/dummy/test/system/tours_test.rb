@@ -111,4 +111,30 @@ class ToursTest < ApplicationSystemTestCase
     visit dashboard_other_url
     refute_selector ".shepherd-element"
   end
+
+  test "tour with custom buttons" do
+    visit dashboard_buttons_url
+    assert_selector ".shepherd-element", visible: true
+    assert_selector ".shepherd-button", text: "Show this to me later"
+    assert_selector ".shepherd-button", text: "Finish now"
+
+    # Confirm that the custom buttons' specified actions work
+
+    ### Click cancel
+    find(".shepherd-button", text: "Show this to me later").click
+    ### Revisit
+    visit dashboard_buttons_url
+    ### Tour doesn't appear
+    refute_selector ".shepherd-element"
+    ### Clear the cookie
+    execute_script("Cookies.remove('abraham-dummy-#{@user_id}-dashboard-buttons-button_tour', { domain: '127.0.0.1' });")
+    ### Revisit
+    visit dashboard_buttons_url
+    ### Tour should reappear and let us click the other button
+    find(".shepherd-button", text: "Finish now").click
+    ### Revisit
+    visit dashboard_buttons_url
+    ### Tour doesn't appear (now because it's completed)
+    refute_selector ".shepherd-element"
+  end
 end

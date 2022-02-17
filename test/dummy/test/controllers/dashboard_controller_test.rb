@@ -62,6 +62,23 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should show custom buttons for locale" do
+    get dashboard_buttons_url
+    assert_response :success
+    assert_select 'body script' do |element|
+      assert element.text.include? 'Show this to me later'
+      assert element.text.include? 'Finish now'
+    end
+
+    I18n.locale = :es
+    get dashboard_buttons_url
+    assert_response :success
+    assert_select 'body script' do |element|
+      assert element.text.include? 'Mas tarde'
+      assert element.text.include? 'Ahora'
+    end
+  end
+
   test "other should have other tour code" do
     get dashboard_other_url
     assert_response :success
