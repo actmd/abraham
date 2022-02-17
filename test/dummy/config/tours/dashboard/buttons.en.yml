@@ -1,0 +1,13 @@
+button_tour:
+  steps:
+    1:
+      text: "ENGLISH custom buttons"
+      buttons:
+        1:
+          text: 'Show this to me later'
+          action: 'cancel'
+          classes: 'custom-button shepherd-button-secondary'
+        2:
+          text: 'Finish now'
+          action: 'complete'
+          classes: 'custom-button'
