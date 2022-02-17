@@ -12,7 +12,7 @@ class ToursTest < ApplicationSystemTestCase
 
     # Tour Step 1
     assert_selector ".shepherd-element", visible: true
-    assert_selector ".shepherd-text", text: "ENGLISH This first HOME step is centered text-only"
+    assert_selector ".shepherd-text", text: "ENGLISH This first HOME step is centered & 'text-only'"
     assert_selector ".shepherd-button", text: "Later"
     assert_selector ".shepherd-button", text: "Continue"
     find(".shepherd-button", text: "Continue").click
@@ -23,8 +23,8 @@ class ToursTest < ApplicationSystemTestCase
     assert_selector ".shepherd-element", count: 1, visible: true
 
     # Tour Step 2
-    assert_selector ".shepherd-header", text: "ENGLISH This step has a title"
-    assert_selector ".shepherd-text", text: "ENGLISH This intermediate step has some text"
+    assert_selector ".shepherd-header", text: "ENGLISH This step has a \"title\""
+    assert_selector ".shepherd-text", text: "ENGLISH This intermediate step has \"some text\""
     assert_selector ".shepherd-button", text: "Exit"
     assert_selector ".shepherd-button", text: "Next"
     find(".shepherd-button", text: "Next").click

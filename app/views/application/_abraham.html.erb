@@ -29,10 +29,10 @@
     <% end %>
     text: "<%= step['text'] %>",
     <% if step.key?('attachTo') %>
-    attachTo: { element: "<%= step['attachTo']['element'] %>", on: "<%= step['attachTo']['placement'] %>" },
+    attachTo: { element: "<%= escape_javascript(step['attachTo']['element'].html_safe) %>", on: "<%= step['attachTo']['placement'] %>" },
     showOn: function() {
       // Only display this step if its selector is present
-      return document.querySelector("<%= step['attachTo']['element'] %>") ? true : false
+      return document.querySelector("<%= escape_javascript(step['attachTo']['element'].html_safe) %>") ? true : false
     },
     <% end %>
     buttons: [
