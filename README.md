@@ -1,7 +1,5 @@
 # Abraham
 
-[![Build Status](https://travis-ci.com/actmd/abraham.svg?branch=master)](https://travis-ci.com/actmd/abraham)
-
 _Guide your users in the one true path._
 
 ![Watercolor Sheep](https://upload.wikimedia.org/wikipedia/commons/e/e4/Watercolor_Sheep_Drawing.jpg)
@@ -16,7 +14,9 @@ Abraham makes it easy to show guided tours to users of your Rails application. W
 
 ## Requirements
 
-* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise.
+* Abraham needs to know the current user to track tour views, e.g. `current_user` from Devise. If you are using a different method to identify who is currently logged in, you can, for example, add an alias to make it work. E.g. Assuming you have a method `current_foo` to identify your currenly logged in user, you can add `alias_method 'current_user', 'current_foo'` in the place you define `current_foo`.
+
+
 * Abraham is tested on Rails 5.2, 6.0, and 6.1
 
 ## Installation
@@ -39,7 +39,7 @@ $ rails db:migrate
 Install the JavaScript dependencies:
 
 ```
-$ yarn add js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
+$ yarn add js-cookie shepherd.js
 ```
 
 Require `abraham` in `app/assets/javascripts/application.js`
@@ -133,18 +133,15 @@ Abraham takes care of which buttons should appear with each step:
 
 When you specify an `attachTo` element, use the `placement` option to choose where the callout should appear relative to that element:
 
-* `bottom` / `bottom center`
-* `bottom left`
-* `bottom right`
-* `center` / `middle` / `middle center`
-* `left` / `middle left`
-* `right` / `middle right`
-* `top` / `top center`
-* `top left`
-* `top right`
+* `auto` /  `auto-start` /  `auto-end`
+* `top` /  `top-start` /  `top-end`
+* `bottom` /  `bottom-start` /  `bottom-end`
+* `right` /  `right-start` /  `right-end`
+* `left` /  `left-start` /  `left-end`
 
 Abraham tries to be helpful when your tour steps attach to page elements that are missing:
 
+* These placement positions are based on what is [avaialble in ShepherdJS](https://shepherdjs.dev/docs/tutorial-02-usage.html).
 * If your first step is attached to a particular element, and that element is not present on the page, the tour won't start. ([#28](https://github.com/actmd/abraham/issues/28))
 * If your tour has an intermediate step attached to a missing element, Abraham will skip that step and automatically show the next. ([#6](https://github.com/actmd/abraham/issues/6))
 
@@ -180,6 +177,30 @@ This tour will not start automatically; instead, use the `Abraham.startTour` met
   $("#startTour").on("click", function() { Abraham.startTour('walkthrough'); })
 </script>
 ```
+
+### Trouble getting it to work with Rails 6+?
+
+Depending on how things are setup in your project, you may run in to issues with getting Abraham to work in a Rails 6+ setup. If you are seeing a browser console error of the form `Abraham not found` (or something to that effect), it means that the Javascript from the gem is not being included properly in the building of the assets. The underlying reason for this is due to the change in the asset pipeline that was introduced in Rails 6 and how some of the things that worked before, no longer do. There are a couple of ways that you can solve this issue.
+
+#### Quick and dirty: Copy & Paste
+
+The simplest thing you can do is copy the contents of the file `app/assets/javascripts/abraham/index.js` and put it in your `app/javascript/packs` directory. For example, you could place it in `app/javascript/packs/abraham.js` in your Rails project. In addition to this change you will need to add the following to the end of the file
+
+```
+window.Abraham = Abraham;
+import Shepherd from "shepherd.js";
+window.Shepherd = Shepherd;
+import Cookies from "js-cookie/src/js.cookie";
+window.Cookies = Cookies;
+```
+
+This will make sure that this is properly attached to the `window` and that the rest of the Javascript code works.
+
+  CAUTION! If you do this, you will need to make sure that if we update that `index.js` file in our repo in the future, that you copy and paste that update to your copy of the file.
+
+#### A little bit more work, but cleaner
+
+Although the above version will work, it can cause an issue if we update Abraham and change the file that you copied. A more sure-fire way to make sure that the file gets included as part of the build process. For this to work you will need to make sure to [follow the guidance provided in the GitHub issue in the Webpacker repo that deals with this exact issue](https://github.com/rails/webpacker/issues/57#issuecomment-491317195). 
 
 ### Testing your tours
 
