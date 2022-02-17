@@ -43,6 +43,12 @@ Install the JavaScript dependencies:
 $ yarn add js-cookie@^2.2.0 shepherd.js@^6.0.0-beta
 ```
 
+Mount the engine in `config/routes.rb`. It is important to mount Abraham as `abraham`, since the inserted `abraham_tour` partial (below) leverages an isolated named route.
+
+```
+mount Abraham::Engine, at: 'abraham'
+```
+
 Require `abraham` in `app/assets/javascripts/application.js`
 
 ```
@@ -69,10 +75,13 @@ defaults: &defaults
 
 You can also [write your own Shepherd theme](https://shepherdjs.dev/docs/tutorial-03-styling.html) based on Shepherd's [default CSS](https://github.com/shipshapecode/shepherd/releases/download/v6.0.0-beta.1/shepherd.css).
 
-Tell Abraham where to insert its generated JavaScript in `app/views/layouts/application.html.erb`, just before the closing `body` tag:
+Tell Abraham where to insert the JavaScript partial. This partial sets up the [Shepherd JS](https://shepherdjs.dev/) tour/s.
+
+Generally it is inserted in `app/views/layouts/application.html.erb`, just before the closing `body` tag:
 
 ```erb
 <%= abraham_tour %>
+
 </body>
 </html>
 ```
@@ -276,7 +285,12 @@ Use `bundle info [gemname]` to see where a bundled gem is installed.
 
 #### Testing locally
 
-This Rails engine contains a test app called `dummy` with controller and system tests. They'll all get run with `rails t`.
+This Rails engine contains a test app called `dummy` with controller and system tests. You can run tests by:
+
+```
+~ rake app:assets:precompile
+~ rails test
+```
 
 Please note that if you change anything in the `lib/generators` folder (i.e. configuration, intializer, migration) you'll need to migrate the `dummy` app accordingly.
 
