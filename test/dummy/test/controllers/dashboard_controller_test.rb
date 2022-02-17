@@ -36,8 +36,8 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "body script" do |element|
       # it's the home tour
-      assert element.text.include? "ENGLISH This first HOME step is centered text-only"
-      # it has three steps
+      assert element.text.include? "ENGLISH This first HOME step is centered &amp; &#39;text-only&#39;"
+      # it has four steps
       assert element.text.include? "step-1"
       assert element.text.include? "step-2"
       assert element.text.include? "step-3"
@@ -59,6 +59,23 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     assert_select 'body script' do |element|
       # it's the spanish home tour
       assert element.text.include? 'SPANISH This first HOME step is centered text-only'
+    end
+  end
+
+  test "should show custom buttons for locale" do
+    get dashboard_buttons_url
+    assert_response :success
+    assert_select 'body script' do |element|
+      assert element.text.include? 'Show this to me later'
+      assert element.text.include? 'Finish now'
+    end
+
+    I18n.locale = :es
+    get dashboard_buttons_url
+    assert_response :success
+    assert_select 'body script' do |element|
+      assert element.text.include? 'Mas tarde'
+      assert element.text.include? 'Ahora'
     end
   end
 
