@@ -4,9 +4,9 @@ module FlipperHelper
   def should_add_tour(flipper_key, flipper_activation)
     case process_activation_option(flipper_activation)
     when "enabled"
-      return (flipper_key && flipper_enabled?(key)) || flipper_key.nil?
+      return (flipper_key && flipper_enabled?(flipper_key)) || flipper_key.nil?
     when "disabled"
-      return (flipper_key && flipper_disabled?(key)) || flipper_key.nil?
+      return (flipper_key && flipper_disabled?(flipper_key)) || flipper_key.nil?
     else
       return false
     end
