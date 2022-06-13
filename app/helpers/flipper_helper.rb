@@ -22,7 +22,7 @@ module FlipperHelper
     end
 
     def flipper_disabled?(key)
-      flipper_defined? && Flipper.disabled?(key.to_sym)
+      flipper_defined? && !Flipper.enabled?(key.to_sym)
     end
 
     def process_activation_option(flipper_activation)
