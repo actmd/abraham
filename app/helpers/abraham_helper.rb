@@ -8,6 +8,8 @@ module AbrahamHelper
     tours ||= Rails.configuration.abraham.tours["#{controller_path}.#{action_name}.#{I18n.default_locale}"]
 
     if tours
+      flipper_defined = Object.const_defined?("Flipper")
+
       # Have any automatic tours been completed already?
       completed = AbrahamHistory.where(
         creator_id: current_user.id,
@@ -21,11 +23,20 @@ module AbrahamHelper
       tour_html = ''
 
       tour_keys.each do |key|
-        tour_html += render(partial: "application/abraham",
-               locals: { tour_name: key,
-                         tour_completed: tour_keys_completed.include?(key),
-                         trigger: tours[key]["trigger"],
-                         steps: tours[key]["steps"] })
+        flipper_key = tours[key]["flipper"]
+
+        should_add_tour =
+          ( (flipper_key and flipper_defined and Flipper.enabled?(flipper_key.to_sym)) ||
+            flipper_key.nil?)
+
+        if should_add_tour
+          tour_html += render(partial: "application/abraham",
+                              locals: { tour_name: key,
+                                        tour_completed: tour_keys_completed.include?(key),
+                                        trigger: tours[key]["trigger"],
+                                        steps: tours[key]["steps"] })
+        end
+
       end
 
       tour_html.html_safe
