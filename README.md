@@ -207,6 +207,29 @@ my_tour:
 * `action` is one of the Shepherd tour method names, i.e. `cancel`, `next`, or `complete`
 * `classes` are the CSS class names you want applied to the button
 
+### Flipper integration
+
+If you have Flipper installed as a dependency in your project you will be able to enable or disable tours based on a flipper useing the `flipper_key` option. This will automatically enable a tour when this flipper is active and disable it when it's inactive.
+
+```yml
+walkthrough:
+  flipper_key: "name_of_flipper"
+  steps:
+    1:
+      text: "This walkthrough will show you how to..."
+```
+
+If you would like to disable a tour when a flipper is active you may couple the `flipper_key` option with the `flipper_activation` option. `flipper_activation` supports "enabled" or "disabled" as options. If you enter something other than "enabled" or "disabled" it will use the default, which is "enabled".
+
+```yml
+walkthrough:
+  flipper_key: "name_of_flipper"
+  flipper_activation: "disabled"
+  steps:
+    1:
+      text: "This walkthrough will show you how to..."
+```
+
 ### Testing your tours
 
 Abraham loads tour definitions once when you start your server. Restart your server to see tour changes.
