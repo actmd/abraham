@@ -20,11 +20,13 @@ class FlipperHelperTest < ActionView::TestCase
     Kernel.const_set('Flipper', mockFlipper)
     assert_equal Flipper, mockFlipper
 
-    # Helper = Class.new { extend FlipperHelper }
-    # assert Helper.send(:flipper_defined?)
-
     assert should_add_tour("foo", "enabled")
-    assert !should_add_tour("foo", "disabled")
+    refute should_add_tour("foo", "disabled")
+
+    mockFlipper.stubs(:enabled?).returns(false)
+
+    refute should_add_tour("foo", "enabled")
+    assert should_add_tour("foo", "disabled")
 
     Kernel.send(:remove_const, :Flipper)
   end

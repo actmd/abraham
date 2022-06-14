@@ -6,9 +6,9 @@ module FlipperHelper
 
     case process_activation_option(flipper_activation)
     when "enabled"
-      return (flipper_key && flipper_enabled?(flipper_key)) || flipper_key.nil?
+      return (flipper_key && Flipper.enabled?(flipper_key.to_sym)) || flipper_key.nil?
     when "disabled"
-      return (flipper_key && flipper_disabled?(flipper_key)) || flipper_key.nil?
+      return (flipper_key && !Flipper.enabled?(flipper_key.to_sym)) || flipper_key.nil?
     else
       return false
     end
@@ -17,14 +17,6 @@ module FlipperHelper
   private
     def flipper_defined?
       Object.const_defined?("Flipper")
-    end
-
-    def flipper_enabled?(key)
-      Flipper.enabled?(key.to_sym)
-    end
-
-    def flipper_disabled?(key)
-      !Flipper.enabled?(key.to_sym)
     end
 
     def process_activation_option(flipper_activation)
