@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module AbrahamHelper
+  include FlipperHelper
+
   def abraham_tour
     # Do we have tours for this controller/action in the user's locale?
     tours = Rails.configuration.abraham.tours["#{controller_path}.#{action_name}.#{I18n.locale}"]
@@ -21,11 +23,16 @@ module AbrahamHelper
       tour_html = ''
 
       tour_keys.each do |key|
-        tour_html += render(partial: "application/abraham",
-               locals: { tour_name: key,
-                         tour_completed: tour_keys_completed.include?(key),
-                         trigger: tours[key]["trigger"],
-                         steps: tours[key]["steps"] })
+        flipper_key = tours[key]["flipper_key"]
+        flipper_activation = tours[key]["flipper_activation"]
+
+        if should_add_tour(flipper_key, flipper_activation)
+          tour_html += render(partial: "application/abraham",
+                              locals: { tour_name: key,
+                                        tour_completed: tour_keys_completed.include?(key),
+                                        trigger: tours[key]["trigger"],
+                                        steps: tours[key]["steps"] })
+        end
       end
 
       tour_html.html_safe
