@@ -209,7 +209,7 @@ my_tour:
 
 ### Flipper integration
 
-If you have Flipper installed as a dependency in your project you will be able to enable or disable tours based on a flipper using the `flipper_key` option. This will automatically enable a tour when this flipper is active and disable it when it's inactive.
+If you have [Flipper](https://github.com/jnunemaker/flipper) installed as a dependency in your project you will be able to enable or disable tours based on a flipper using the `flipper_key` option. This will automatically enable a tour when this flipper is active and disable it when it's inactive.
 
 ```yml
 walkthrough:
