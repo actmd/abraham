@@ -2,7 +2,7 @@
   "name": "abraham",
   "private": true,
   "dependencies": {
-    "js-cookie": "^2.2.0",
-    "shepherd.js": "^6.0.0-beta"
+    "js-cookie": "^3.0.1",
+    "shepherd.js": "^10"
   }
 }
