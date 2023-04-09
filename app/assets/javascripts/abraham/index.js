@@ -1,6 +1,3 @@
-//= require js-cookie/dist/js.cookie
-//= require shepherd.js/dist/js/shepherd
-
 var Abraham = new Object();
 
 Abraham.tours = {};
