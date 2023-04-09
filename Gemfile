@@ -11,7 +11,7 @@ end
 rails_version = ENV['RAILS_VERSION'] || 'default'
 rails = case rails_version
         when 'default'
-          '~> 5.2'
+          '~> 6.1.6'
         when 'master'
           {github: 'rails/rails'}
         else
