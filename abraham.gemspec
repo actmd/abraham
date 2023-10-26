@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.description = "Trackable application tours for Rails with i18n support, based on Shepherd.js."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_development_dependency 'sassc-rails'
   s.add_development_dependency 'sqlite3'
