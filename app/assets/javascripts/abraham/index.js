@@ -1,5 +1,5 @@
-//= require js-cookie/src/js.cookie
-//= require shepherd.js/dist/js/shepherd
+//= require js.cookie
+//= require shepherd.min
 
 var Abraham = new Object();
 

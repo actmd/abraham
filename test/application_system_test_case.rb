@@ -1,5 +1,4 @@
 require "test_helper"
-require "webdrivers"
 
 Capybara.server = :webrick
 
