@@ -1,0 +1,29 @@
+# Checklist Buddy by Mibex Software https://www.mibexsoftware.com/
+
+# To create a new task, use '+task+' followed by the task description. 
+# To create a reminder (a non-blocking comment), use '+comment+' followed by the comment text
+
+# To filter when a task is applied, prepend the task/comment/title with one or more of the following filters:
+# '--source'        - the source branch pattners
+# '--source-except' - all pull requests except those matching this pattern 
+# '--target'        - the target/destination branch patterns
+# '--files'         - diff file pattern, similar to .gitignore
+
+# When more than one task has the same filter settings, these are grouped as a checklist.
+# Note: entries with the same filter settings will be grouped together, regardless of position in file
+
+# To name a checklist, create a line entry with the desired filter settings and +title+ Your Checklist Title
+
+# EXAMPLES https://github.com/mibexsoftware/checklist-buddy-demo/blob/main/PRCHECKLIST
+
+# Checklist for Security Reviewer
+--files /** +title+ Security Review (Not for PR Owner)
+--files /** +task+ [Rails OWASP Checklist](https://www.notion.so/activatecare/OWASP-Top-Ten-Ruby-on-Rails-checklist-3460102fa3024d2db35e5503126b53c4?pvs=4) has been considered and no potential vulnerabilities found.
+
+# Checklist for Coding Guidelines
++title+ Developer/Requestor Review
++task+  The code follows the Activate Care development guidelines.
++task+  There are appropriate tests, preferring unit tests to system tests.
++task+  Performance related impacts have been considered.
++task+  Commit messages follow our conventions.
++task+  If there is a migration needed, I have performed a staging migration test and updated development.sql.
