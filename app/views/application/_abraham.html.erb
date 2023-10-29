@@ -69,6 +69,9 @@
         
         if (tourMayStart) {
           start();
+          return true;
+        } else {
+          return false;
         }
       }
     }(Abraham.tours["<%= tour_name %>"].start)

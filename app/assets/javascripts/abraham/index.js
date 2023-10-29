@@ -11,9 +11,10 @@ Abraham.startTour = function(tourName) {
   }
 };
 Abraham.startNextIncompleteTour = function() {
-  if (Abraham.incompleteTours.length) {
-  	Abraham.tours[Abraham.incompleteTours[0]].checkAndStart();
-  }
+  for (const i in Abraham.incompleteTours) {
+    var tour_did_run = Abraham.tours[Abraham.incompleteTours[i]].checkAndStart();
+    if(tour_did_run){ break; };
+  };
 };
 
 document.addEventListener("DOMContentLoaded", Abraham.startNextIncompleteTour);
