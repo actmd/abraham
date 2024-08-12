@@ -5,6 +5,7 @@ require "rails/generators/active_record"
 
 module Abraham
   module Generators
+    # Instalador de Abraham
     class InstallGenerator < ActiveRecord::Generators::Base
       argument :name, type: :string, default: "random_name"
 

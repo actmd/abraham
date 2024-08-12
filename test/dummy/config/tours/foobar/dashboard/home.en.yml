@@ -1,4 +1,0 @@
-module:
-  steps:
-    1:
-      text: "This tour should appear for the Foobar::DashboardController only"

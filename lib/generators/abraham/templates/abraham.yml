@@ -1,3 +1,4 @@
+---
 defaults: &defaults
   # Add any valid Shepherd.js configuration JSON here
   # and it will be passed into the `new Shepherd.Tour()`

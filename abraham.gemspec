@@ -23,4 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'listen'
   s.add_development_dependency 'web-console'
+  s.metadata['rubygems_mfa_required'] = 'true'
 end

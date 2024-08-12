@@ -1,7 +1,9 @@
+---
 es:
   abraham:
-    later: "Luego"
+    later: "Ver después"
     continue: "Continuar"
-    exit: "Dejar"
+    exit: "Cerrar"
     done: "Hecho"
+    back: "Atrás"
     next: "Siguiente"

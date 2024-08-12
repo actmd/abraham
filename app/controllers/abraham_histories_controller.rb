@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AbrahamHistoriesController < ApplicationController
+  skip_authorization_check
+
   def create
     @abraham_history = AbrahamHistory.new(abraham_history_params)
     @abraham_history.creator_id = current_user.id

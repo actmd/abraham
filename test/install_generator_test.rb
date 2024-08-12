@@ -4,13 +4,14 @@ require "test_helper"
 require "rails/generators"
 require "generators/abraham/install_generator"
 
+# Test para generador de Abraham
 class InstallGeneratorTest < Rails::Generators::TestCase
   tests Abraham::Generators::InstallGenerator
   destination File.expand_path("../tmp", __dir__)
 
   setup :prepare_destination
 
-  test "should generate a migration" do
+  should "generar migracion para crear la tabla abraham_histories" do
     begin
       run_generator
       assert_migration "db/migrate/create_abraham_histories"
@@ -19,7 +20,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  test "should skip the migration when told to do so" do
+  should "--skip-migration debe saltar la generacion de la migracion" do
     begin
       run_generator ["--skip-migration"]
       assert_no_migration "db/migrate/create_abraham_histories"
@@ -28,7 +29,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  test "should generate an initializer" do
+  should "generar el inicializador de abraham" do
     begin
       run_generator
       assert_file "config/initializers/abraham.rb"
@@ -38,7 +39,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     end
   end
 
-  test "should skip the initializer when told to do so" do
+  should "--skip-initializer debe saltar la generación del inicializador de abraham" do
     begin
       run_generator ["--skip-initializer"]
       assert_no_file "config/initializers/abraham.rb"

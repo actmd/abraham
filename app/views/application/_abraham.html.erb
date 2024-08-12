@@ -1,9 +1,17 @@
-<script>
+<script nonce="<%= try(:content_security_policy_nonce) %>" id='tour-guiado'>
+  var screenWidth = window.innerWidth >= 960 ? 'desktop' : 'mobile';
   Abraham.tours["<%= tour_name %>"] = new Shepherd.Tour(<%= Rails.configuration.abraham.tour_options.html_safe unless Rails.configuration.abraham.tour_options.nil? %>);
 
   <% if trigger != 'manual' %>
   Abraham.tours["<%= tour_name %>"].on("complete", function() {
-    // Make AJAX call to save history of tour completion
+    <% if enable_amplitude %>
+      $(document).trigger('amplitudeTracking', {
+        message: 'End_Tour',
+        data: {
+          tour_name: `<%= tour_name %>`,
+        },
+      });
+    <% end %>
     return fetch("/abraham_histories/", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -16,8 +24,13 @@
     });
   });
 
+  var setLater = () => {
+    Cookies.set('<%= abraham_cookie_prefix %>-<%= tour_name %>', 'later', { domain: '<%= abraham_domain %>',  expires: 15 });
+    Abraham.tours["<%= tour_name %>"].hide();
+  }
+
   Abraham.tours["<%= tour_name %>"].on("cancel", function() {
-    Cookies.set('<%= abraham_cookie_prefix %>-<%= tour_name %>', 'later', { domain: '<%= abraham_domain %>' });
+    Abraham.tours["<%= tour_name %>"].complete();
   });
   <% end %>
 
@@ -25,31 +38,80 @@
   Abraham.tours["<%= tour_name %>"].addStep({
     id: 'step-<%= key %>',
     <% if step.key?('title') %>
-    title: "<%= step['title'] %>",
-    <% end %>
-    text: "<%= step['text'] %>",
+     title: `
+    <%= content_tag :div, class: step.key?('image_path') ? 'coachmark-image-container' : '' do %>
+      <% if step.key?('image_path') %>
+        <%= image_pack_tag step['image_path'], class: 'coachmark-image img-fluid' %>
+      <% end %>
+      <%= content_tag(:span, step['title'], class: 'coachmark-title-text') %>
+    <% end %>`,
+  <% end %>
+    text: `<%= sanitize step['text'] %>`,
     <% if step.key?('attachTo') %>
     attachTo: { element: "<%= escape_javascript(step['attachTo']['element'].html_safe) %>", on: "<%= step['attachTo']['placement'] %>" },
     showOn: function() {
-      // Only display this step if its selector is present
       return document.querySelector("<%= escape_javascript(step['attachTo']['element'].html_safe) %>") ? true : false
     },
+    <% end %>
+    <% if step.key?('floatingUIOptions') %>
+    floatingUIOptions: <%= step['floatingUIOptions'].html_safe %>,
+    <% end %>
+    <% if step.key?('modalOverlayOpeningPadding') %>
+    modalOverlayOpeningPadding: <%= step['modalOverlayOpeningPadding'] %>,
+    <% end %>
+    <% if step.key?('modalOverlayOpeningRadius') %>
+    modalOverlayOpeningRadius: <%= step['modalOverlayOpeningRadius'] %>,
+    <% end %>
+    <% if step.key?('beforeShowPromise') %>
+    beforeShowPromise(){<%= step['beforeShowPromise'].html_safe %>},
     <% end %>
     buttons: [
     <% if step.key?('buttons') %>
       <% step['buttons'].each do |button| %>
-        { text: '<%= button[1]['text']  %>', action: Abraham.tours["<%= tour_name %>"].<%= button[1]['action'] %>, classes: '<%= button[1]['classes'] %>' },
+        { text: `<%= button[1]['text'] %>`,
+          <% if button[1]['actionType'] == 'action' %>
+            action(){<%= button[1]['action'].html_safe %>},
+          <% else %>
+            <% if button[1]['action'] == 'next' && index == 0 %>
+              action() {
+                  <% if enable_amplitude %>
+                    $(document).trigger('amplitudeTracking', {
+                      message: 'Start_Tour',
+                      data: {
+                        tour_name: `<%= tour_name %>`,
+                      },
+                    });
+                  <% end %>
+                this.next()
+              },
+            <% else %>
+                action: Abraham.tours["<%= tour_name %>"].<%= button[1]['action'] %>,
+            <% end %>
+          <% end %>
+          classes: '<%= button[1]['classes'] %>' },
       <% end %>
     <% else %>
       <% if index == steps.size - 1 %>
-        { text: '<%= t('abraham.done') %>', action: Abraham.tours["<%= tour_name %>"].complete }
+        { text: '<%= I18n.t('abraham.exit') %>', action: Abraham.tours["<%= tour_name %>"].complete, classes: 'btn-secondary' }
       <% else %>
         <% if index == 0 %>
-          { text: '<%= t('abraham.later') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
-          { text: '<%= t('abraham.continue') %>', action: Abraham.tours["<%= tour_name %>"].next }
+          { text: '<%= I18n.t('abraham.next') %>',
+          action() {
+            <% if enable_amplitude %>
+              $(document).trigger('amplitudeTracking', {
+                message: 'Start_Tour',
+                data: {
+                  tour_name: `<%= tour_name %>`,
+                },
+              });
+            <% end %>
+           this.next()
+          },
+          classes: 'btn-secondary' },
+          { text: '<%= I18n.t('abraham.later') %>', action: setLater, classes: 'btn-primary ghost' }
         <% else %>
-        { text: '<%= t('abraham.exit') %>', action: Abraham.tours["<%= tour_name %>"].cancel, classes: 'shepherd-button-secondary' },
-        { text: '<%= t('abraham.next') %>', action: Abraham.tours["<%= tour_name %>"].next }
+        { text: '<%= I18n.t('abraham.next') %>', action: Abraham.tours["<%= tour_name %>"].next, classes: 'btn-secondary' },
+        { text: '<%= I18n.t('abraham.back') %>', action: Abraham.tours["<%= tour_name %>"].back, classes: 'btn-primary ghost' }
         <% end %>
       <% end %>
     <% end %>
@@ -66,15 +128,28 @@
         // Don't start the tour if the first step's element is missing
         tourMayStart = tourMayStart && document.querySelector("<%= steps.first[1]['attachTo']['element'] %>");
         <% end %>
-        
-        if (tourMayStart) {
+
+        if (tourMayStart && !Shepherd.activeTour) {
           start();
         }
       }
     }(Abraham.tours["<%= tour_name %>"].start)
 
     <% if !tour_completed %>
-    Abraham.incompleteTours.push("<%= tour_name %>");
+      <% if display %>
+        if (screenWidth == '<%= display %>') {
+          Abraham.incompleteTours.push("<%= tour_name %>");
+          window.addEventListener('resize', () => {
+              let prevScreenWidth = screenWidth;
+              screenWidth = window.innerWidth >= 960 ? 'desktop' : 'mobile';
+              if(prevScreenWidth !== screenWidth) {
+                location.reload();
+              }
+          });
+        }
+      <% else %>
+        Abraham.incompleteTours.push("<%= tour_name %>");
+      <% end %>
     <% end %>
   <% end %>
 

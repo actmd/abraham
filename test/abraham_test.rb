@@ -3,7 +3,7 @@
 require "test_helper"
 
 class Abraham::Test < ActiveSupport::TestCase
-  test "truth" do
+  should "modulo abraham activo" do
     assert_kind_of Module, Abraham
   end
 end

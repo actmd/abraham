@@ -2,10 +2,10 @@
 
 Rails.application.configure do
   tours = {}
-  tours_root = Pathname.new(Rails.root.join("config/tours"))
+  tours_root = Pathname.new(Rails.root.join('config', 'tours'))
 
-  if Rails.root.join("config/tours").exist?
-    Dir.glob(Rails.root.join("config/tours/**/*.yml")).each do |yml|
+  if Rails.root.join('config', 'tours').exist?
+    Dir.glob(Rails.root.join('config', 'locales', 'tours', '**', '*.yml')).each do |yml|
       relative_filename = Pathname.new(yml).relative_path_from(tours_root)
       # `controller_path` is either "controller_name" or "module_name/controller_name"
       controller_path, filename = relative_filename.split
