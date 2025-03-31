@@ -1,4 +1,18 @@
-# Abraham
+# Abraham (Fork)
+
+This is a fork of [`abraham`](https://github.com/actmd/abraham), originally created by ACT.md.  
+
+## Why This Fork?  
+
+This fork was created to allow project-specific changes to the gem as simply as possible.  
+
+## Differences from the Original  
+
+- Adds class support for steps  
+- Relax Rails version constraints  
+
+
+## Abraham
 
 _Guide your users in the one true path._
 
